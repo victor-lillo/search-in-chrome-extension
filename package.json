@@ -7,19 +7,19 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-check --tsconfig ./tsconfig.json && tsc --noEmit"
   },
   "devDependencies": {
-    "@crxjs/vite-plugin": "2.0.0-beta.12",
-    "@sveltejs/vite-plugin-svelte": "2.0.2",
-    "@tsconfig/svelte": "3.0.0",
-    "@types/chrome": "0.0.213",
-    "autoprefixer": "10.4.13",
-    "postcss": "8.4.21",
-    "svelte": "3.55.1",
-    "svelte-check": "2.10.3",
-    "tslib": "2.5.0",
-    "typescript": "4.9.3",
-    "vite": "4.1.0"
+    "@crxjs/vite-plugin": "2.0.0-beta.23",
+    "@sveltejs/vite-plugin-svelte": "3.0.1",
+    "@tsconfig/svelte": "5.0.2",
+    "@types/chrome": "0.0.258",
+    "autoprefixer": "10.4.17",
+    "postcss": "8.4.33",
+    "svelte": "4.2.9",
+    "svelte-check": "3.6.3",
+    "tslib": "2.6.2",
+    "typescript": "5.3.3",
+    "vite": "5.0.12"
   }
 }
