@@ -1,0 +1,23 @@
+@import url(reset.css);
+@import url(tokens.css);
+
+html {
+  color-scheme: dark;
+  background-color: var(--color-dark-3);
+  line-height: 1.5;
+  font-family: var(--font-family);
+}
+
+#app {
+  padding: 1rem;
+}
+
+#full-page-app {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.icon {
+  display: flex;
+}

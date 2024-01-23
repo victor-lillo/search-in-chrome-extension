@@ -1,0 +1,28 @@
+{
+  "printWidth": 120,
+  "semi": false,
+  "singleAttributePerLine": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "overrides": [
+    {
+      "files": ["*.svelte"],
+      "options": {
+        "semi": false,
+        "singleAttributePerLine": false,
+        "svelteAllowShorthand": true,
+        "svelteBracketNewLine": true,
+        "svelteIndentScriptAndStyle": true,
+        "svelteSortOrder": "options-scripts-markup-styles",
+        "svelteStrictMode": false
+      }
+    },
+    {
+      "files": ["*.json"],
+      "options": {
+        "useTabs": false
+      }
+    }
+  ]
+}
