@@ -5,7 +5,7 @@ export default function onMessage() {
     const isFromContentScript = Boolean(sender.tab)
 
     if (isFromContentScript) {
-      console.log('Received message from a content script:' + sender.tab.url)
+      console.log('Received message from a content script:' + sender?.tab?.url)
       console.log(request)
       // Handle request
       sendResponse({ [RESPONSE_OK]: true })

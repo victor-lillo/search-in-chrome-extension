@@ -9,6 +9,6 @@ export async function sendMessageToBackground(message: Message) {
 
 export async function sendMessageToContent(message: Message) {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
-  const response = await chrome.tabs.sendMessage(tab.id, message)
+  const response = await chrome.tabs.sendMessage(tab.id!, message)
   return response
 }
