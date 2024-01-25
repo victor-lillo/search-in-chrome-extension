@@ -4,7 +4,7 @@
   type Variants = 'dev-red' | 'dev-green' | 'primary' | 'secondary' | 'alert'
   export let ariaLabel: string | undefined = undefined
   export let disabled = false
-  export let handleClick: MouseEventHandler<HTMLButtonElement>
+  export let handleClick: MouseEventHandler<HTMLButtonElement> | undefined = undefined
   export let type: 'button' | 'submit' | 'reset' = 'submit'
   export let variant: Variants | undefined = undefined
   export let width: 'fit-content' | 'full' = 'fit-content'
