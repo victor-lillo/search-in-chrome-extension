@@ -1,5 +1,5 @@
 {
-  "name": "Chrome Extension Svelte Template",
+  "name": "Search in...",
   "description": "Chrome Extension Svelte Template: it does things.",
   "version": "1.0",
   "manifest_version": 3,
@@ -31,6 +31,6 @@
     "page": "src/options/options.html",
     "open_in_tab": true
   },
-  "permissions": ["storage"],
+  "permissions": ["storage", "contextMenus"],
   "host_permissions": ["<all_urls>"]
 }
