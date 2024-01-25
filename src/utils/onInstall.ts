@@ -1,3 +1,7 @@
-export default function onInstall(onInstallCallback) {
-  chrome.runtime.onInstalled.addListener(onInstallCallback)
+type onInstallCallback = (details: chrome.runtime.InstalledDetails) => void
+
+export default function onInstall(onInstallCallback: onInstallCallback) {
+  chrome.runtime.onInstalled.addListener((details) => {
+    onInstallCallback(details)
+  })
 }
