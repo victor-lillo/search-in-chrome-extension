@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from '../components/Button.svelte'
+  import Form from '../components/Form.svelte'
   import { MESSAGE_OBJECT } from '../constants'
   import { sendMessageToBackground, sendMessageToContent } from '../utils/sendMessage'
 
@@ -25,6 +26,7 @@
   <Button handleClick={messageToBackground} variant="alert">Send message to Background</Button>
   <Button handleClick={messageToContent} variant="alert">Send message to Content</Button>
   <Button handleClick={openOptionsPage}>Open options</Button>
+  <Form></Form>
 </section>
 
 <style>
