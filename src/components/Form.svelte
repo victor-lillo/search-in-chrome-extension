@@ -21,11 +21,11 @@
   Add your custom search
   <label>
     ID
-    <input type="text" bind:value={searchId} />
+    <input type="text" bind:value={searchId} required />
   </label>
   <label>
     Search url
-    <input type="url" placeholder="https://example.com" pattern="https://.*" bind:value={searchUrl} />
+    <input type="url" placeholder="https://example.com" pattern="https://.*" bind:value={searchUrl} required />
   </label>
   <div class="button-container">
     <Button variant={'primary'} type="submit">Save</Button>
@@ -54,11 +54,18 @@
     gap: 1rem;
     justify-content: center;
   }
-  input:invalid {
-    border: 1px solid red;
+
+  input {
+    outline: 4px solid red;
   }
 
-  textarea:focus {
-    border-color: var(--color-accent-grey);
+  input:valid,
+  input:valid:focus-visible {
+    outline-color: green;
+  }
+
+  input:invalid,
+  input:invalid:focus-visible {
+    outline-color: red;
   }
 </style>
