@@ -1,0 +1,2 @@
+- Correctly add Prettier to Svelte (auto collapse tags for non-children components)
+- Drag and drop for reordering
