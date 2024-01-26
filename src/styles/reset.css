@@ -2,6 +2,29 @@
 ::before,
 ::after {
   box-sizing: border-box;
+  padding: 0;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100svh;
+}
+
+body,
+ol,
+ul,
+li,
+p,
+div {
+  margin: 0;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
 a {
@@ -10,8 +33,6 @@ a {
   text-decoration: none;
 }
 
-body,
-p,
 h1,
 h2,
 h3,
@@ -19,8 +40,18 @@ h4,
 h5,
 h6 {
   margin: 0;
+  text-wrap: balance;
+  font-weight: 600;
 }
 
-ul {
-  padding: 0;
+p {
+  text-wrap: pretty;
+}
+
+img,
+picture,
+svg,
+video {
+  max-width: 100%;
+  display: block;
 }
