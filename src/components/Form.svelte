@@ -20,10 +20,11 @@
 <p>For adding your custom search</p>
 
 <form on:submit|preventDefault={handleAdd}>
-  <label> ID </label>
-  <input type="text" bind:value={searchId} required />
-  <label> Search url </label>
+  <label for="id"> ID </label>
+  <input id="id" type="text" bind:value={searchId} required />
+  <label for="url"> Search url </label>
   <input
+    id="url"
     type="url"
     placeholder="https://example.com/search?q=PLACEHOLDER"
     pattern="https://.*"
