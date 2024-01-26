@@ -17,16 +17,19 @@
   }
 </script>
 
+<p>For adding your custom search</p>
+
 <form on:submit|preventDefault={handleAdd}>
-  Add your custom search
-  <label>
-    ID
-    <input type="text" bind:value={searchId} required />
-  </label>
-  <label>
-    Search url
-    <input type="url" placeholder="https://example.com" pattern="https://.*" bind:value={searchUrl} required />
-  </label>
+  <label> ID </label>
+  <input type="text" bind:value={searchId} required />
+  <label> Search url </label>
+  <input
+    type="url"
+    placeholder="https://example.com/search?q=PLACEHOLDER"
+    pattern="https://.*"
+    bind:value={searchUrl}
+    required
+  />
   <div class="button-container">
     <Button variant={'primary'} type="submit">Save</Button>
   </div>
@@ -34,29 +37,30 @@
 
 <style>
   form {
-    display: flex;
-    flex-direction: column;
-    font-size: 1rem;
-    gap: 0.5rem;
-    align-items: center;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    border: 1px solid red;
+    column-gap: 0.5rem;
+    row-gap: 1rem;
   }
 
   label {
-    align-self: flex-start;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: var(--font-weight-bold);
+    grid-column: 1;
+    min-width: 0;
+    white-space: nowrap;
   }
 
   .button-container {
+    grid-column: 1 / 3;
     display: flex;
-    width: 100%;
-    flex-direction: row;
-    gap: 1rem;
     justify-content: center;
   }
 
   input {
-    outline: 4px solid red;
+    outline: 2px solid red;
+    grid-column: 2;
   }
 
   input:valid,
