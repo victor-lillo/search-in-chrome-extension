@@ -1,12 +1,6 @@
-import { SEARCH_PLACEHOLDER, STORAGE_KEYS } from '../constants'
+import { STORAGE_KEYS } from '../constants'
+import { DEFAULT } from './presets'
 import { setStorage } from './storage'
-
-const searchObj: { id: string; url: string }[] = [
-  { id: '🌐 Google', url: `https://google.com/search?q=${SEARCH_PLACEHOLDER}` },
-  { id: '🤖 StackOverflow', url: `https://stackoverflow.com/search?q=${SEARCH_PLACEHOLDER}` },
-  { id: '💻 GitHub Code', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=code` },
-  { id: '📚 GitHub Repositories', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=repositories` },
-]
 
 async function saveInitialDate() {
   await setStorage({ [STORAGE_KEYS.installDate]: installDate })
@@ -14,7 +8,7 @@ async function saveInitialDate() {
 
 async function onInstallCallback(details: chrome.runtime.InstalledDetails) {
   console.log('Installed ✅', details)
-  for (const { id } of searchObj) {
+  for (const { id } of DEFAULT.searchLinks) {
     chrome.contextMenus.create({
       id: id,
       title: id,
