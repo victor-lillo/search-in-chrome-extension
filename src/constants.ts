@@ -1,5 +1,5 @@
 export const STORAGE_KEYS = {
-  keyName: 'keyName',
+  searchLinks: 'searchLinks',
 }
 
 export const SEARCH_PLACEHOLDER = 'PLACEHOLDER'
