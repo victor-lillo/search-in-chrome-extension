@@ -11,7 +11,7 @@
 </script>
 
 <button aria-label={ariaLabel} on:click={handleClick} class={variant} class:full={width === 'full'} {disabled} {type}>
-  <slot />
+  <slot ></slot>
 </button>
 
 <style>
