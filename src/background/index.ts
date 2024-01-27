@@ -6,16 +6,16 @@ const SEARCH_PLACEHOLDER = 'TOSEARCH'
 
 console.log('Service worker started.')
 
-const searchObj: Record<string, string> = {
-  '🌐 Google': `https://google.com/search?q=${SEARCH_PLACEHOLDER}`,
-  '🤖 StackOverflow': `https://stackoverflow.com/search?q=${SEARCH_PLACEHOLDER}`,
-  '💻 GitHub Code': `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=code`,
-  '📚 GitHub Repositories': `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=repositories`,
-}
+const searchObj: { id: string; url: string }[] = [
+  { id: '🌐 Google', url: `https://google.com/search?q=${SEARCH_PLACEHOLDER}` },
+  { id: '🤖 StackOverflow', url: `https://stackoverflow.com/search?q=${SEARCH_PLACEHOLDER}` },
+  { id: '💻 GitHub Code', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=code` },
+  { id: '📚 GitHub Repositories', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=repositories` },
+]
 
 const onInstallCallback = async (details: chrome.runtime.InstalledDetails) => {
   console.log('Installed ✅', details)
-  for (const [id, searchUrl] of Object.entries(searchObj)) {
+  for (const { id, url } of searchObj) {
     chrome.contextMenus.create({
       id: id,
       title: id,
@@ -30,7 +30,9 @@ chrome.contextMenus.onClicked.addListener((item, tab) => {
   const tabIndex = tab!.index
   const selectionText = item.selectionText!
   const menuItemId = item.menuItemId
-  const url = searchObj[menuItemId].replace(SEARCH_PLACEHOLDER, selectionText)
+  const selectedSearchUrl = searchObj.find(({ id }) => id === menuItemId)?.url
+  if (!selectedSearchUrl) return
+  const url = selectedSearchUrl.replace(SEARCH_PLACEHOLDER, selectionText)
 
   chrome.tabs.create({ url: url, index: tabIndex + 1 })
 })
