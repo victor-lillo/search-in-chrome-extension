@@ -1,4 +1,4 @@
-const SEARCH_PLACEHOLDER = 'TOSEARCH'
+import { SEARCH_PLACEHOLDER } from '../constants'
 
 type SearchLink = {
   id: string
@@ -11,7 +11,7 @@ type Preset = {
   searchLinks: SearchLink[]
 }
 
-const DEFAULT: Preset = {
+export const DEFAULT: Preset = {
   id: 'default',
   label: 'Default preset',
   searchLinks: [
@@ -24,7 +24,7 @@ const DEFAULT: Preset = {
   ],
 }
 
-const DEV: Preset = {
+export const DEV: Preset = {
   id: 'dev',
   label: 'Dev preset',
   searchLinks: [
