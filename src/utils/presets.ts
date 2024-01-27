@@ -23,6 +23,7 @@ const DEFAULT: Preset = {
     { id: '🟠 Reddit', url: `https://www.reddit.com/search/?q=${SEARCH_PLACEHOLDER}` },
   ],
 }
+
 const DEV: Preset = {
   id: 'dev',
   label: 'Dev preset',
