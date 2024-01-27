@@ -15,7 +15,7 @@ const searchObj: { id: string; url: string }[] = [
 
 const onInstallCallback = async (details: chrome.runtime.InstalledDetails) => {
   console.log('Installed ✅', details)
-  for (const { id, url } of searchObj) {
+  for (const { id } of searchObj) {
     chrome.contextMenus.create({
       id: id,
       title: id,
