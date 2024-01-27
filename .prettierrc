@@ -11,7 +11,7 @@
       "options": {
         "semi": false,
         "singleAttributePerLine": false,
-        "svelteAllowShorthand": true,
+        "svelteAllowShorthand": false,
         "svelteBracketNewLine": true,
         "svelteIndentScriptAndStyle": true,
         "svelteSortOrder": "options-scripts-markup-styles",
