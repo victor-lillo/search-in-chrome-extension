@@ -1,11 +1,11 @@
 import { SEARCH_PLACEHOLDER } from '../constants'
 
-type SearchLink = {
+export type SearchLink = {
   id: string
   url: string
 }
 
-type Preset = {
+export type Preset = {
   id: string
   label: string
   searchLinks: SearchLink[]
