@@ -3,7 +3,8 @@
   import { DEFAULT, type SearchLink } from '../utils/presets'
   import { STORAGE_KEYS } from '../constants'
 
-  let searchId: string = ''
+  let search: string = ''
+  let selectedIds: string = ''
 
   async function getSavedUrls() {
     const preset = await getStorage(STORAGE_KEYS.searchLinks)
@@ -22,65 +23,46 @@
 
     // await setStorage({ blockedDomains: updatedDomains })
   }
-
-  async function log() {
-    const storage = await getStorage('searchUrls')
-    console.log(storage)
-  }
 </script>
 
-<p>For adding your custom search</p>
-
+<div>
+  <label for="id"> Filter </label>
+  <input id="id" type="text" bind:value={search} required />
+</div>
 <form on:submit|preventDefault={handleAdd}>
-  <label for="id"> ID </label>
-  <input id="id" type="text" bind:value={searchId} required />
   {#await searchUrls then value}
     {#each value as { id, url }}
-      <div>
+      <div class="fieldset-row">
+        <input bind:group={selectedIds} id={id} name="id" type="checkbox" value={id} />
         <label for={id}>
-          {id} : {url}
+          {id}
+          <code>
+            {url}
+          </code>
         </label>
-        <input id={id} name="id" type="checkbox" value={id} />
       </div>
     {/each}
   {/await}
 </form>
+<p>{selectedIds.toString()}</p>
 
 <style>
   form {
     display: grid;
-    grid-template-columns: min-content 1fr;
-    border: 1px solid red;
-    column-gap: 0.5rem;
-    row-gap: 1rem;
+    gap: 1rem;
   }
 
   label {
-    font-size: 1.3rem;
-    font-weight: var(--font-weight-bold);
-    grid-column: 1;
-    min-width: 0;
+    font-size: 1rem;
     white-space: nowrap;
   }
 
-  .button-container {
-    grid-column: 1 / 3;
+  .fieldset-row {
     display: flex;
-    justify-content: center;
+    gap: 1rem;
   }
 
-  input {
-    outline: 2px solid red;
-    grid-column: 2;
-  }
-
-  input:valid,
-  input:valid:focus-visible {
+  input:focus-visible {
     outline-color: green;
-  }
-
-  input:invalid,
-  input:invalid:focus-visible {
-    outline-color: red;
   }
 </style>
