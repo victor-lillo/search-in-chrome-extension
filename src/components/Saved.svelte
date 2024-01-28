@@ -28,8 +28,8 @@
   <input id="id" type="text" bind:value={filter} required />
 </div>
 <form on:submit|preventDefault={handleRemove}>
-  {#await searchUrls then value}
-    {#each value as { id, url }}
+  {#if searchUrls.length > 0}
+    {#each searchUrls as { id, url }}
       <div class="fieldset-row">
         <input bind:group={selectedIds} id={id} name="id" type="checkbox" value={id} />
         <label for={id}>
@@ -40,7 +40,7 @@
         </label>
       </div>
     {/each}
-  {/await}
+  {/if}
   <Button variant="alert" type="submit">Delete</Button>
 </form>
 <p>{selectedIds.toString()}</p>
