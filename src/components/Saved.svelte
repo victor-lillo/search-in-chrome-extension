@@ -1,35 +1,33 @@
 <script lang="ts">
   import { getStorage, setStorage } from '../utils/storage'
-  import { DEFAULT, type SearchLink } from '../utils/presets'
   import { STORAGE_KEYS } from '../constants'
+  import Button from './Button.svelte'
 
-  let search: string = ''
-  let selectedIds: string = ''
+  let filter: string = ''
+  let searchUrls: { id: string; url: string }[] = []
+  let selectedIds: string[] = []
 
   async function getSavedUrls() {
     const preset = await getStorage(STORAGE_KEYS.searchLinks)
-    console.log(preset)
-    return preset
+    searchUrls = preset
   }
+  getSavedUrls()
 
-  const searchUrls = getSavedUrls()
-
-  async function handleAdd() {
-    console.log('Add')
-    // const { updatedDomains, feedback } = processDomainsTextarea({ text: value, previousDomains: blockedDomains })
-    // placeholder = feedback
-    // blockedDomains = updatedDomains
-    // value = ''
-
-    // await setStorage({ blockedDomains: updatedDomains })
+  async function handleRemove() {
+    selectedIds.forEach((element) => {
+      chrome.contextMenus.remove(element)
+    })
+    const newSearchUrls = searchUrls.filter(({ id }) => !selectedIds.includes(id))
+    searchUrls = newSearchUrls
+    await setStorage({ [STORAGE_KEYS.searchLinks]: newSearchUrls })
   }
 </script>
 
 <div>
   <label for="id"> Filter </label>
-  <input id="id" type="text" bind:value={search} required />
+  <input id="id" type="text" bind:value={filter} required />
 </div>
-<form on:submit|preventDefault={handleAdd}>
+<form on:submit|preventDefault={handleRemove}>
   {#await searchUrls then value}
     {#each value as { id, url }}
       <div class="fieldset-row">
@@ -43,6 +41,7 @@
       </div>
     {/each}
   {/await}
+  <Button variant="alert" type="submit">Delete</Button>
 </form>
 <p>{selectedIds.toString()}</p>
 
