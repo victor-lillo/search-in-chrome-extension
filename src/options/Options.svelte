@@ -1,9 +1,14 @@
 <script lang="ts">
+  import Saved from '../components/Saved.svelte'
+  import Form from '../components/Form.svelte'
+
   export let prop: string
 </script>
 
 <section>
   <h1>Options {prop}</h1>
+  <Saved />
+  <Form />
 </section>
 
 <style>
