@@ -1,7 +1,12 @@
 {
   "extends": ["stylelint-config-html"],
   "rules": {
-    "at-rule-empty-line-before": "always",
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "ignoreAtRules": ["import"]
+      }
+    ],
     "declaration-block-no-duplicate-properties": [
       true,
       {
