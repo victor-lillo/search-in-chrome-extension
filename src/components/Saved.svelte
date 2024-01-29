@@ -7,10 +7,23 @@
   let searchUrls: { id: string; url: string }[] = []
   let selectedIds: string[] = []
 
+  function reactToStorage() {
+    chrome.storage.onChanged.addListener(async (changes) => {
+      for (const [key, { newValue }] of Object.entries(changes)) {
+        if (key === STORAGE_KEYS.searchLinks) {
+          searchUrls = newValue
+        }
+      }
+    })
+  }
+
+  reactToStorage()
+
   async function getSavedUrls() {
     const preset = await getStorage(STORAGE_KEYS.searchLinks)
     searchUrls = preset
   }
+
   getSavedUrls()
 
   async function handleRemove() {
