@@ -1,19 +1,29 @@
 <script lang="ts">
   import Button from './Button.svelte'
 
-  import { setStorage } from '../utils/storage'
+  import { getStorage, setStorage } from '../utils/storage'
+  import { STORAGE_KEYS } from '../constants'
 
   let searchId: string = ''
   let searchUrl: string = ''
 
   async function handleAdd() {
-    console.log('Add')
-    // const { updatedDomains, feedback } = processDomainsTextarea({ text: value, previousDomains: blockedDomains })
-    // placeholder = feedback
-    // blockedDomains = updatedDomains
-    // value = ''
+    const storage = await getStorage(STORAGE_KEYS.searchLinks)
 
-    // await setStorage({ blockedDomains: updatedDomains })
+    await setStorage({
+      [STORAGE_KEYS.searchLinks]: [
+        ...storage,
+        {
+          id: searchId,
+          url: searchUrl,
+        },
+      ],
+    })
+  }
+
+  async function log() {
+    const storage = await getStorage('searchUrls')
+    console.log(storage)
   }
 </script>
 
@@ -24,23 +34,23 @@
   <input id="id" type="text" bind:value={searchId} required />
   <label for="url"> Search url </label>
   <input
+    bind:value={searchUrl}
     id="url"
     type="url"
     placeholder="https://example.com/search?q=PLACEHOLDER"
     pattern="https://.*"
-    bind:value={searchUrl}
     required
   />
   <div class="button-container">
     <Button variant={'primary'} type="submit">Save</Button>
   </div>
 </form>
+<button type="button" on:click={log}>Log</button>
 
 <style>
   form {
     display: grid;
     grid-template-columns: min-content 1fr;
-    border: 1px solid red;
     column-gap: 0.5rem;
     row-gap: 1rem;
   }
@@ -60,7 +70,7 @@
   }
 
   input {
-    outline: 2px solid red;
+    outline: 2px solid blue;
     grid-column: 2;
   }
 
