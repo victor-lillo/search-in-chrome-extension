@@ -42,7 +42,8 @@
 </div>
 <form on:submit|preventDefault={handleRemove}>
   {#if searchUrls.length > 0}
-    {#each searchUrls as { id, url }}
+    {@const filteredUrls = searchUrls.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
+    {#each filteredUrls as { id, url }}
       <div class="fieldset-row">
         <input bind:group={selectedIds} id={id} name="id" type="checkbox" value={id} />
         <label for={id}>
