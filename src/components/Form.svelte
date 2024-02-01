@@ -3,21 +3,21 @@
 
   import { getStorage, setStorage } from '../utils/storage'
   import { STORAGE_KEYS } from '../constants'
+  import addContextMenu from '../utils/addContextMenu'
 
   let searchId: string = ''
   let searchUrl: string = ''
 
   async function handleAdd() {
     const storage = await getStorage(STORAGE_KEYS.searchLinks)
+    const searchLink = {
+      id: searchId,
+      url: searchUrl,
+    }
 
+    addContextMenu([searchLink])
     await setStorage({
-      [STORAGE_KEYS.searchLinks]: [
-        ...storage,
-        {
-          id: searchId,
-          url: searchUrl,
-        },
-      ],
+      [STORAGE_KEYS.searchLinks]: [...storage, searchLink],
     })
   }
 
