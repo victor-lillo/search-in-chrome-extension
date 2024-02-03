@@ -31,7 +31,7 @@
     color: var(--color-light-1);
     background-color: var(--background-color);
     border: 2px solid var(--border-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-1);
     padding: 0.4rem 1rem;
     width: var(--width);
     display: flex;
