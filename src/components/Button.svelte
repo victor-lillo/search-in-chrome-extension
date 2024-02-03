@@ -45,6 +45,7 @@
   .full {
     --width: 100%;
   }
+
   .dev-red {
     --background-color: crimson;
     --border-color: #ffcd07;
