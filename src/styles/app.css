@@ -21,3 +21,9 @@ body {
   place-items: center;
   min-height: 100vh;
 }
+
+code {
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius-1);
+  background-color: var(--color-dark-4);
+}
