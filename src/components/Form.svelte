@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from './Button.svelte'
+  import FormInstructions from './FormInstructions.svelte'
 
   import { getStorage, setStorage } from '../utils/storage'
   import { STORAGE_KEYS } from '../constants'
@@ -29,16 +30,18 @@
 
 <p>For adding your custom search</p>
 
+<FormInstructions />
+
 <form on:submit|preventDefault={handleAdd}>
   <label for="id"> ID </label>
-  <input id="id" type="text" bind:value={searchId} required />
+  <input id="id" type="text" bind:value={searchId} pattern=".*\S.*" placeholder="👉🏽 Your ID" required />
   <label for="url"> Search url </label>
   <input
     bind:value={searchUrl}
     id="url"
     type="url"
     placeholder="https://example.com/search?q=PLACEHOLDER"
-    pattern="https://.*"
+    pattern="https://.*PLACEHOLDER.*"
     required
   />
   <div class="button-container">
@@ -74,13 +77,11 @@
     grid-column: 2;
   }
 
-  input:valid,
-  input:valid:focus-visible {
+  input:is(:valid, :valid:focus-visible) {
     outline-color: green;
   }
 
-  input:invalid,
-  input:invalid:focus-visible {
+  input:not(:placeholder-shown):is(:invalid, :invalid:focus-visible) {
     outline-color: red;
   }
 </style>
