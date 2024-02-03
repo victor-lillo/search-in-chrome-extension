@@ -10,8 +10,16 @@
   export let width: 'fit-content' | 'full' = 'fit-content'
 </script>
 
-<button aria-label={ariaLabel} on:click={handleClick} class={variant} class:full={width === 'full'} {disabled} {type}>
-  <slot ></slot>
+<button
+  aria-label={ariaLabel}
+  on:click={handleClick}
+  class={variant}
+  class:full={width === 'full'}
+  disabled={disabled}
+  type={type}
+>
+  <!-- eslint-disable-next-line svelte/html-self-closing -->
+  <slot />
 </button>
 
 <style>
