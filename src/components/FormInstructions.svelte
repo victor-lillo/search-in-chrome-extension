@@ -3,8 +3,8 @@
   <ul>
     <li><strong>ID:</strong> Specify the desired identifier for your entry.</li>
     <li>
-      <strong>URL:</strong> Provide the URLs. Ensure they commence with <code>https://</code> and include
-      <code>PLACEHOLDER</code>, which will be substituted when utilized.
+      <strong>URL:</strong> Provide the URLs. Ensure they starts with <code>https://</code> and include
+      <code>PLACEHOLDER</code>, which will be replaced with the selected text when utilized.
     </li>
   </ul>
 </details>
