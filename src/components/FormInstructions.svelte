@@ -1,10 +1,10 @@
 <details>
-  <summary>Instructions</summary>
+  <summary>Guidelines</summary>
   <ul>
-    <li><strong>ID:</strong> Add the ID you want.</li>
+    <li><strong>ID:</strong> Specify the desired identifier for your entry.</li>
     <li>
-      <strong>URL:</strong> Add the URLS. It must start with <code>https://</code> and must contain
-      <code>PLACEHOLDER</code>, which will be replaced when used.
+      <strong>URL:</strong> Provide the URLs. Ensure they commence with <code>https://</code> and include
+      <code>PLACEHOLDER</code>, which will be substituted when utilized.
     </li>
   </ul>
 </details>
