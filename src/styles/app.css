@@ -18,8 +18,9 @@ body {
 
 #full-page-app {
   display: grid;
-  place-items: center;
   min-height: 100vh;
+  max-width: 70ch;
+  margin: auto;
 }
 
 code {
