@@ -60,6 +60,11 @@
 <p>{selectedIds.toString()}</p>
 
 <style>
+  div {
+    display: flex;
+    gap: 0.5rem;
+  }
+
   form {
     display: grid;
     gap: 1rem;
@@ -68,6 +73,13 @@
   label {
     font-size: 1rem;
     white-space: nowrap;
+  }
+
+  input {
+    outline: 2px solid transparent;
+    border-radius: var(--border-radius-1);
+    padding-left: 0.5rem;
+    border: none;
   }
 
   .fieldset-row {
