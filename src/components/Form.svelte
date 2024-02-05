@@ -73,8 +73,11 @@
   }
 
   input {
-    outline: 2px solid blue;
     grid-column: 2;
+    outline: 2px solid blue;
+    border-radius: var(--border-radius-1);
+    padding-left: 0.5rem;
+    border: none;
   }
 
   input:is(:valid, :valid:focus-visible) {
