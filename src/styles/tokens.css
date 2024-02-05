@@ -1,10 +1,11 @@
 :root {
   /* https://color-shader.vercel.app/#ffffff/50 */
-  --color-light-0: #ffffff;
-  --color-light-1: #fafafa;
-  --color-light-2: #f5f5f5;
-  --color-light-3: #f0f0f0;
-  --color-light-4: #ebebeb;
+
+  --color-light-1: #f9f9f9;
+  --color-light-2: #f2f2f2;
+  --color-light-3: #ececec;
+  --color-light-4: #e6e6e6;
+  --color-light-5: #dfdfdf;
 
   --color-dark-1: #0d0d0d;
   --color-dark-2: #1a1a1a;
