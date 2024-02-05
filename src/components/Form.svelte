@@ -80,7 +80,7 @@
     border: none;
   }
 
-  input:is(:valid, :valid:focus-visible) {
+  input:is(:focus-visible, :valid, :valid:focus-visible) {
     outline-color: green;
   }
 
