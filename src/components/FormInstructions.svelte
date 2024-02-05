@@ -11,27 +11,24 @@
 
 <style>
   details {
-    border: 1px solid #aaa;
     border-radius: var(--border-radius-1);
-    padding: 0.5em 0.5em 0;
+    border: 2px solid var(--color-dark-3);
     cursor: pointer;
     list-style-type: '▶️';
   }
 
   summary {
-    font-weight: bold;
-    margin: -0.5em -0.5em 0;
-    padding: 0.5em;
+    background-color: var(--color-dark-3);
+    padding: 0.5rem;
+    font-size: 1.1rem;
   }
 
   details[open] {
     list-style-type: '🔽';
-    padding: 0.5em;
   }
 
-  details[open] summary {
-    border-bottom: 1px solid #aaa;
-    margin-bottom: 0.5em;
+  ul {
+    padding: 0.5rem;
   }
 
   li {
