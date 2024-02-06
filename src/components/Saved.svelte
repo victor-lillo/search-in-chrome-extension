@@ -43,6 +43,7 @@
 <form on:submit|preventDefault={handleRemove}>
   {#if searchUrls.length > 0}
     {@const filteredUrls = searchUrls.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
+
     {#each filteredUrls as { id, url }}
       <div class="fieldset-row">
         <input bind:group={selectedIds} id={id} name="id" type="checkbox" value={id} />
@@ -54,6 +55,9 @@
         </label>
       </div>
     {/each}
+    {#if filteredUrls.length === 0}
+      <p>No results...</p>
+    {/if}
   {/if}
   <Button variant="alert" type="submit">Delete</Button>
 </form>
