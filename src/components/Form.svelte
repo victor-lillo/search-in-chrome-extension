@@ -21,11 +21,6 @@
       [STORAGE_KEYS.searchLinks]: [...storage, searchLink],
     })
   }
-
-  async function log() {
-    const storage = await getStorage('searchUrls')
-    console.log(storage)
-  }
 </script>
 
 <FormInstructions />
@@ -46,7 +41,6 @@
     <Button variant="primary" type="submit">SAVE</Button>
   </div>
 </form>
-<button type="button" on:click={log}>Log</button>
 
 <style>
   form {
