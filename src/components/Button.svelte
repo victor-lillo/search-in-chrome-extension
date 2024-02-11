@@ -27,7 +27,6 @@
     --background-color: #009e20;
     --border-color: transparent;
     --width: fit-content;
-    --hover-box-shadow: none;
 
     font-size: 1rem;
     font-weight: 500;
@@ -46,7 +45,6 @@
 
   button:is(:hover):not(:disabled) {
     filter: brightness(1.2);
-    box-shadow: var(--hover-box-shadow);
   }
 
   button:disabled {
