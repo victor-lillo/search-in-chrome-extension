@@ -73,7 +73,6 @@
     --background-color: transparent;
     color: var(--color-light-1);
     --border-color: var(--color-light-1);
-    --hover-box-shadow: var(--box-shadow-hover-light);
   }
 
   .outlined-red {
