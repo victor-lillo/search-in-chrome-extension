@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export default async function onStorageChanged() {
   chrome.storage.onChanged.addListener(async (changes, namespace) => {
     for (const [key, { oldValue, newValue }] of Object.entries(changes)) {
