@@ -43,7 +43,7 @@
     required
   />
   <div class="button-container">
-    <Button variant={'primary'} type="submit">Save</Button>
+    <Button variant="primary" type="submit">SAVE</Button>
   </div>
 </form>
 <button type="button" on:click={log}>Log</button>
