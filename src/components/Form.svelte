@@ -28,8 +28,6 @@
   }
 </script>
 
-<p>For adding your custom search</p>
-
 <FormInstructions />
 
 <form on:submit|preventDefault={handleAdd}>

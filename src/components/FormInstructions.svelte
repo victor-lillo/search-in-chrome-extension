@@ -1,5 +1,5 @@
 <details>
-  <summary>Guidelines</summary>
+  <summary>How to add a custom search?</summary>
   <ul>
     <li><strong>ID:</strong> Specify the desired identifier for your entry.</li>
     <li>
