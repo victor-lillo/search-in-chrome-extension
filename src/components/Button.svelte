@@ -27,6 +27,8 @@
     --background-color: #009e20;
     --border-color: transparent;
     --width: fit-content;
+    --hover-box-shadow: var(--box-shadow-hover-light);
+
     font-size: 1rem;
     color: var(--color-light-1);
     background-color: var(--background-color);
@@ -43,7 +45,7 @@
 
   button:is(:hover):not(:disabled) {
     filter: brightness(1.2);
-    box-shadow: var(--box-shadow-hover);
+    box-shadow: var(--hover-box-shadow);
   }
 
   button:disabled {
@@ -70,8 +72,8 @@
 
   .secondary {
     --background-color: transparent;
-    color: var(--color-dark-1);
-    --border-color: var(--color-dark-1);
+    color: var(--color-light-1);
+    --border-color: var(--color-light-1);
   }
 
   .alert {
