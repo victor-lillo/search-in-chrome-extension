@@ -59,7 +59,7 @@
       <p>No results...</p>
     {/if}
   {/if}
-  <Button variant="alert" type="submit">Delete</Button>
+  <Button variant="outlined-red" type="submit">DELETE</Button>
 </form>
 <p>{selectedIds.toString()}</p>
 
