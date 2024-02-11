@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { MouseEventHandler } from 'svelte/elements'
 
-  type Variants = 'dev-red' | 'dev-green' | 'primary' | 'secondary' | 'alert'
+  type Variants = 'dev-red' | 'dev-green' | 'primary' | 'secondary' | 'outlined-red'
   export let ariaLabel: string | undefined = undefined
   export let disabled = false
   export let handleClick: MouseEventHandler<HTMLButtonElement> | undefined = undefined
@@ -27,14 +27,15 @@
     --background-color: #009e20;
     --border-color: transparent;
     --width: fit-content;
-    --hover-box-shadow: var(--box-shadow-hover-light);
+    --hover-box-shadow: none;
 
     font-size: 1rem;
+    font-weight: 500;
     color: var(--color-light-1);
     background-color: var(--background-color);
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius-1);
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 1.4rem;
     width: var(--width);
     display: flex;
     align-items: center;
@@ -74,11 +75,16 @@
     --background-color: transparent;
     color: var(--color-light-1);
     --border-color: var(--color-light-1);
+    --hover-box-shadow: var(--box-shadow-hover-light);
   }
 
-  .alert {
+  .outlined-red {
     --background-color: transparent;
     color: crimson;
     --border-color: crimson;
+  }
+
+  .outlined-red:hover {
+    --background-color: rgba(244, 67, 54, 0.08);
   }
 </style>
