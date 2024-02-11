@@ -1,13 +1,10 @@
 import '../styles/app.css'
-import { extensionName } from './../utils/extensionData'
 import Options from './Options.svelte'
 
-const target = document.getElementById('full-page-app')
+const target = document.getElementById('full-page-app')!
 
 async function render() {
-  const prop = extensionName
-
-  new Options({ target, props: { prop } })
+  new Options({ target, props: {} })
 }
 
 document.addEventListener('DOMContentLoaded', render)

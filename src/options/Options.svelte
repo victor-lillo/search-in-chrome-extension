@@ -1,12 +1,10 @@
 <script lang="ts">
   import Saved from '../components/Saved.svelte'
   import Form from '../components/Form.svelte'
-
-  export let prop: string
 </script>
 
 <section>
-  <h1>Options {prop}</h1>
+  <h1>Settings</h1>
   <Saved />
   <Form />
 </section>
@@ -19,5 +17,9 @@
     min-height: 80%;
     min-width: var(--width-full-page);
     padding-block: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
   }
 </style>
