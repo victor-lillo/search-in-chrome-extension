@@ -37,7 +37,7 @@
 </script>
 
 <div>
-  <label for="id"> Filter </label>
+  <label class="filter-label" for="id"> Filter </label>
   <input id="id" type="text" bind:value={filter} required />
 </div>
 <form on:submit|preventDefault={handleRemove}>
@@ -69,18 +69,13 @@
     gap: 0.5rem;
   }
 
+  .filter-label {
+    font-size: 1.3rem;
+  }
+
   form {
     display: grid;
     gap: 1rem;
-  }
-
-  label {
-    font-size: 1rem;
-    white-space: nowrap;
-  }
-
-  label code {
-    margin-left: 0.5rem;
   }
 
   input {
@@ -93,6 +88,15 @@
   .fieldset-row {
     display: flex;
     gap: 0.5rem;
+  }
+
+  .fieldset-row label {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+
+  .fieldset-row label code {
+    margin-left: 0.5rem;
   }
 
   input:focus-visible {
