@@ -13,7 +13,6 @@
   details {
     border-radius: var(--border-radius-1);
     border: 2px solid var(--color-dark-3);
-    cursor: pointer;
     list-style-type: '▶️';
   }
 
@@ -21,6 +20,7 @@
     background-color: var(--color-dark-3);
     padding: 0.5rem;
     font-size: 1.1rem;
+    cursor: pointer;
   }
 
   details[open] {
