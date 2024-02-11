@@ -79,6 +79,10 @@
     white-space: nowrap;
   }
 
+  label code {
+    margin-left: 0.5rem;
+  }
+
   input {
     outline: 2px solid transparent;
     border-radius: var(--border-radius-1);
@@ -88,7 +92,7 @@
 
   .fieldset-row {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   input:focus-visible {

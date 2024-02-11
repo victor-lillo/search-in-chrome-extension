@@ -18,5 +18,6 @@
     gap: 1rem;
     min-height: 80%;
     min-width: var(--width-full-page);
+    padding-block: 2rem;
   }
 </style>
