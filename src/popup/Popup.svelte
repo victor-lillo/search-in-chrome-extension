@@ -10,7 +10,7 @@
 
 <section>
   <Form />
-  <Button variant="secondary" handleClick={openOptionsPage}>Open options <Settings /></Button>
+  <Button variant="outlined-white" handleClick={openOptionsPage}>Open options <Settings /></Button>
 </section>
 
 <style>
