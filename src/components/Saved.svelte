@@ -3,7 +3,7 @@
   import { getStorage, setStorage } from '../utils/storage'
   import { STORAGE_KEYS } from '../constants'
   import Button from './Button.svelte'
-  import Settings from './icons/Settings.svelte'
+  import Drag from './icons/Drag.svelte'
 
   let filter: string = ''
   let searchUrls: { id: string; url: string }[] = []
@@ -79,7 +79,6 @@
             event.preventDefault()
           }}
         >
-          <Settings />
           <input bind:group={selectedIds} id={item.id} name="id" type="checkbox" value={item.id} />
           <label for={item.id}>
             {item.id}
@@ -87,6 +86,7 @@
               {item.url}
             </code>
           </label>
+          <Drag size={20} />
         </li>
       {/each}
     </ul>
@@ -122,8 +122,9 @@
 
   .fieldset-row {
     display: flex;
+    align-items: center;
     gap: 0.5rem;
-    border: 1px solid red;
+    cursor: grab;
   }
 
   .fieldset-row label {
@@ -131,8 +132,17 @@
     white-space: nowrap;
   }
 
+  .fieldset-row input {
+    cursor: pointer;
+  }
+
   .fieldset-row label code {
     margin-left: 0.5rem;
+  }
+
+  .fieldset-row :global(svg) {
+    display: flex;
+    flex-shrink: 0;
   }
 
   input:focus-visible {
