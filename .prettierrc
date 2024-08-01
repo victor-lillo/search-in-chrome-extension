@@ -9,7 +9,7 @@
     {
       "files": ["*.svelte"],
       "options": {
-        "semi": false,
+        "semi": true,
         "singleAttributePerLine": false,
         "svelteAllowShorthand": false,
         "svelteBracketNewLine": true,
