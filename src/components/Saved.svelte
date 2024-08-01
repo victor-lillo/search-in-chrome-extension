@@ -77,8 +77,8 @@
         animate:flip={{ duration: 500 }}
         on:drop={(event) => drop(event, itemIndex)}
         on:dragstart={(event) => dragStart(event, itemIndex)}
-        on:dragover={() => {
-          return false
+        on:dragover={(event) => {
+          event.preventDefault()
         }}
       >
         <Settings />
