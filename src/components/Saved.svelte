@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { flip } from 'svelte/animate'
   import { getStorage, setStorage } from '../utils/storage'
   import { STORAGE_KEYS } from '../constants'
   import Button from './Button.svelte'
+  import Settings from './icons/Settings.svelte'
 
   let filter: string = ''
   let searchUrls: { id: string; url: string }[] = []
@@ -34,6 +36,30 @@
     searchUrls = newSearchUrls
     await setStorage({ [STORAGE_KEYS.searchLinks]: newSearchUrls })
   }
+
+  function dragStart(event: DragEvent, itemIndex: number) {
+    // The data we want to make available when the element is dropped
+    // is the index of the item being dragged and
+    // the index of the basket from which it is leaving.
+    const data = { itemIndex }
+    event.dataTransfer!.effectAllowed = 'move'
+    event.dataTransfer?.setData('text/plain', JSON.stringify(data))
+  }
+
+  function drop(event: DragEvent, finalItemIndex: number) {
+    event.preventDefault()
+    const json = event.dataTransfer!.getData('text/plain')
+    const data = JSON.parse(json)
+    const movedItemIndex = data.itemIndex
+    console.log({ movedItemIndex, finalItemIndex })
+
+    // Splice returns an array of the deleted elements, just one in this case.
+    const [movedItem] = searchUrls.splice(movedItemIndex, 1)
+    console.log(movedItem)
+
+    searchUrls.splice(finalItemIndex, 0, movedItem)
+    searchUrls = searchUrls
+  }
 </script>
 
 <div>
@@ -44,16 +70,26 @@
   {#if searchUrls.length > 0}
     {@const filteredUrls = searchUrls.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
 
-    {#each filteredUrls as { id, url }}
-      <div class="fieldset-row">
-        <input bind:group={selectedIds} id={id} name="id" type="checkbox" value={id} />
-        <label for={id}>
-          {id}
+    {#each filteredUrls as item, itemIndex (item)}
+      <li
+        class="fieldset-row"
+        draggable="true"
+        animate:flip={{ duration: 500 }}
+        on:drop={(event) => drop(event, itemIndex)}
+        on:dragstart={(event) => dragStart(event, itemIndex)}
+        on:dragover={() => {
+          return false
+        }}
+      >
+        <Settings />
+        <input bind:group={selectedIds} id={item.id} name="id" type="checkbox" value={item.id} />
+        <label for={item.id}>
+          {item.id}
           <code>
-            {url}
+            {item.url}
           </code>
         </label>
-      </div>
+      </li>
     {/each}
     {#if filteredUrls.length === 0}
       <p>No results...</p>
@@ -88,6 +124,7 @@
   .fieldset-row {
     display: flex;
     gap: 0.5rem;
+    border: 1px solid red;
   }
 
   .fieldset-row label {
