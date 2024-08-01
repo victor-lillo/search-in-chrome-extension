@@ -51,46 +51,45 @@
     const json = event.dataTransfer!.getData('text/plain')
     const data = JSON.parse(json)
     const movedItemIndex = data.itemIndex
-    console.log({ movedItemIndex, finalItemIndex })
 
     // Splice returns an array of the deleted elements, just one in this case.
     const [movedItem] = searchUrls.splice(movedItemIndex, 1)
-    console.log(movedItem)
 
     searchUrls.splice(finalItemIndex, 0, movedItem)
     searchUrls = searchUrls
   }
 </script>
 
-<div>
+<div class="filter-container">
   <label class="filter-label" for="id"> Filter </label>
   <input id="id" type="text" bind:value={filter} required />
 </div>
 <form on:submit|preventDefault={handleRemove}>
   {#if searchUrls.length > 0}
     {@const filteredUrls = searchUrls.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
-
-    {#each filteredUrls as item, itemIndex (item)}
-      <li
-        class="fieldset-row"
-        draggable="true"
-        animate:flip={{ duration: 500 }}
-        on:drop={(event) => drop(event, itemIndex)}
-        on:dragstart={(event) => dragStart(event, itemIndex)}
-        on:dragover={(event) => {
-          event.preventDefault()
-        }}
-      >
-        <Settings />
-        <input bind:group={selectedIds} id={item.id} name="id" type="checkbox" value={item.id} />
-        <label for={item.id}>
-          {item.id}
-          <code>
-            {item.url}
-          </code>
-        </label>
-      </li>
-    {/each}
+    <ul class="list-container">
+      {#each filteredUrls as item, itemIndex (item)}
+        <li
+          class="fieldset-row"
+          draggable="true"
+          animate:flip={{ duration: 500 }}
+          on:drop={(event) => drop(event, itemIndex)}
+          on:dragstart={(event) => dragStart(event, itemIndex)}
+          on:dragover={(event) => {
+            event.preventDefault()
+          }}
+        >
+          <Settings />
+          <input bind:group={selectedIds} id={item.id} name="id" type="checkbox" value={item.id} />
+          <label for={item.id}>
+            {item.id}
+            <code>
+              {item.url}
+            </code>
+          </label>
+        </li>
+      {/each}
+    </ul>
     {#if filteredUrls.length === 0}
       <p>No results...</p>
     {/if}
@@ -100,7 +99,7 @@
 <p>{selectedIds.toString()}</p>
 
 <style>
-  div {
+  .filter-container {
     display: flex;
     gap: 0.5rem;
   }
@@ -109,7 +108,7 @@
     font-size: 1.3rem;
   }
 
-  form {
+  .list-container {
     display: grid;
     gap: 1rem;
   }
