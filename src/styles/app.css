@@ -19,7 +19,7 @@ body {
 #full-page-app {
   display: grid;
   min-height: 100vh;
-  max-width: 70ch;
+  max-width: calc(100% - 2rem);
   margin: auto;
 }
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Saved from '../components/Saved.svelte'
-  import Form from '../components/Form.svelte'
+  import Saved from '../components/Saved.svelte';
+  import Form from '../components/Form.svelte';
 </script>
 
 <section>
@@ -17,6 +17,8 @@
     min-height: 80%;
     min-width: var(--width-full-page);
     padding-block: 2rem;
+    width: fit-content;
+    margin: auto;
   }
 
   h1 {
