@@ -1,5 +1,5 @@
 <script>
-  export const size = 36;
+  export let size = 36;
 </script>
 
 <svg fill="currentColor" width={size} height={size} viewBox="0 0 1920 1920">
