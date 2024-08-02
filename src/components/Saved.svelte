@@ -49,7 +49,7 @@
     currentTarget.style.opacity = '0.4';
   }
 
-  function handleDrop(event: DragEvent, finalItemIndex: number) {
+  async function handleDrop(event: DragEvent, finalItemIndex: number) {
     event.preventDefault();
     const json = event.dataTransfer!.getData('text/plain');
     const data = JSON.parse(json);
@@ -61,6 +61,7 @@
     searchUrls.splice(finalItemIndex, 0, movedItem);
     searchUrls = searchUrls;
     hoveredIndex = null;
+    await setStorage({ [STORAGE_KEYS.searchLinks]: searchUrls });
   }
 
   function handleDragOver(event: DragEvent) {
