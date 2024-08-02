@@ -38,13 +38,14 @@
   }
 
   function handleDragStart(event: DragEvent, itemIndex: number) {
+    const currentTarget = event.currentTarget as HTMLElement;
     // The data we want to make available when the element is dropped
     // is the index of the item being dragged and
     // the index of the basket from which it is leaving.
     const data = { itemIndex };
     event.dataTransfer!.effectAllowed = 'move';
     event.dataTransfer?.setData('text/plain', JSON.stringify(data));
-    event.currentTarget.style.opacity = '0.4';
+    currentTarget.style.opacity = '0.4';
   }
 
   function handleDrop(event: DragEvent, finalItemIndex: number) {
