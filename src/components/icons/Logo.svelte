@@ -1,18 +1,25 @@
 <script lang="ts">
-  export let animation: boolean = false
-  export let size: 1 | 2 = 1
+  export let animation: boolean = false;
+  export let size: 1 | 2 = 1;
 </script>
 
-<svg class={`icon size-${size}`} class:animation xmlns="http://www.w3.org/2000/svg" viewBox="0 0 353.48 242.2">
+<svg
+  class={`icon size-${size}`}
+  class:animation={animation}
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 353.48 242.2"
+>
   {#if animation}
     <defs>
       <linearGradient id="animatedGradient" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="1" y2="1">
         <stop offset="0%" stop-color="#5a0d70">
-          <animate attributeName="stop-color" values="#5a0d70; #000000; #5a0d70" dur="4s" repeatCount="indefinite" ></animate>
+          <animate attributeName="stop-color" values="#5a0d70; #000000; #5a0d70" dur="4s" repeatCount="indefinite"
+          ></animate>
         </stop>
 
         <stop offset="100%" stop-color="#000000">
-          <animate attributeName="stop-color" values="#000000; #5a0d70; #000000" dur="4s" repeatCount="indefinite" ></animate>
+          <animate attributeName="stop-color" values="#000000; #5a0d70; #000000" dur="4s" repeatCount="indefinite"
+          ></animate>
         </stop>
         <animateTransform
           attributeName="gradientTransform"

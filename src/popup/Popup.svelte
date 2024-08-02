@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Button from '../components/Button.svelte'
-  import Form from '../components/Form.svelte'
-  import Settings from '../components/icons/Settings.svelte'
+  import Button from '../components/Button.svelte';
+  import Form from '../components/Form.svelte';
+  import Settings from '../components/icons/Settings.svelte';
 
   const openOptionsPage = () => {
-    chrome.runtime.openOptionsPage()
-  }
+    chrome.runtime.openOptionsPage();
+  };
 </script>
 
 <section>

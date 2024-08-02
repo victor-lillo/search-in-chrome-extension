@@ -1,13 +1,13 @@
 <script lang="ts">
-  import type { MouseEventHandler } from 'svelte/elements'
+  import type { MouseEventHandler } from 'svelte/elements';
 
-  type Variants = 'dev-red' | 'dev-green' | 'primary' | 'secondary' | 'outlined-red' | 'outlined-white'
-  export let ariaLabel: string | undefined = undefined
-  export let disabled = false
-  export let handleClick: MouseEventHandler<HTMLButtonElement> | undefined = undefined
-  export let type: 'button' | 'submit' | 'reset' = 'submit'
-  export let variant: Variants | undefined = undefined
-  export let width: 'fit-content' | 'full' = 'fit-content'
+  type Variants = 'dev-red' | 'dev-green' | 'primary' | 'secondary' | 'outlined-red' | 'outlined-white';
+  export let ariaLabel: string | undefined = undefined;
+  export let disabled = false;
+  export let handleClick: MouseEventHandler<HTMLButtonElement> | undefined = undefined;
+  export let type: 'button' | 'submit' | 'reset' = 'submit';
+  export let variant: Variants | undefined = undefined;
+  export let width: 'fit-content' | 'full' = 'fit-content';
 </script>
 
 <button

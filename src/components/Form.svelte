@@ -1,25 +1,25 @@
 <script lang="ts">
-  import Button from './Button.svelte'
-  import FormInstructions from './FormInstructions.svelte'
+  import Button from './Button.svelte';
+  import FormInstructions from './FormInstructions.svelte';
 
-  import { getStorage, setStorage } from '../utils/storage'
-  import { STORAGE_KEYS } from '../constants'
-  import addContextMenu from '../utils/addContextMenu'
+  import { getStorage, setStorage } from '../utils/storage';
+  import { STORAGE_KEYS } from '../constants';
+  import addContextMenu from '../utils/addContextMenu';
 
-  let searchId: string = ''
-  let searchUrl: string = ''
+  let searchId: string = '';
+  let searchUrl: string = '';
 
   async function handleAdd() {
-    const storage = await getStorage(STORAGE_KEYS.searchLinks)
+    const storage = await getStorage(STORAGE_KEYS.searchLinks);
     const searchLink = {
       id: searchId,
       url: searchUrl,
-    }
+    };
 
-    addContextMenu([searchLink])
+    addContextMenu([searchLink]);
     await setStorage({
       [STORAGE_KEYS.searchLinks]: [...storage, searchLink],
-    })
+    });
   }
 </script>
 
