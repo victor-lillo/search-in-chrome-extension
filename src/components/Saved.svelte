@@ -129,16 +129,16 @@
 {/if}
 
 <style>
-  .form-container,
   .filter-container {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 
   .filter-label {
     font-size: 1.3rem;
   }
 
+  .form-container,
   .list-container {
     display: grid;
     gap: 1rem;
