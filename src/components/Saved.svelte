@@ -116,7 +116,6 @@
               {item.url}
             </code>
           </label>
-          <Drag size={20} />
         </li>
       {/each}
     </ul>
@@ -154,8 +153,10 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    cursor: grab;
-    border: 1px solid transparent;
+    cursor: move;
+    border: 1px solid var(--color-dark-4);
+    border-radius: var(--border-radius-1);
+    padding: 0.5rem 1rem;
   }
 
   .fieldset-row--over {
@@ -165,6 +166,7 @@
   .fieldset-row label {
     font-size: 1rem;
     white-space: nowrap;
+    cursor: inherit;
   }
 
   .fieldset-row input {
@@ -173,11 +175,6 @@
 
   .fieldset-row label code {
     margin-left: 0.5rem;
-  }
-
-  .fieldset-row :global(svg) {
-    display: flex;
-    flex-shrink: 0;
   }
 
   input:focus-visible {
