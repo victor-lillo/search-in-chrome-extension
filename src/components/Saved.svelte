@@ -37,16 +37,17 @@
     await setStorage({ [STORAGE_KEYS.searchLinks]: newSearchUrls });
   }
 
-  function dragStart(event: DragEvent, itemIndex: number) {
+  function handleDragStart(event: DragEvent, itemIndex: number) {
     // The data we want to make available when the element is dropped
     // is the index of the item being dragged and
     // the index of the basket from which it is leaving.
     const data = { itemIndex };
     event.dataTransfer!.effectAllowed = 'move';
     event.dataTransfer?.setData('text/plain', JSON.stringify(data));
+    event.currentTarget.style.opacity = '0.4';
   }
 
-  function drop(event: DragEvent, finalItemIndex: number) {
+  function handleDrop(event: DragEvent, finalItemIndex: number) {
     event.preventDefault();
     const json = event.dataTransfer!.getData('text/plain');
     const data = JSON.parse(json);
@@ -57,6 +58,26 @@
 
     searchUrls.splice(finalItemIndex, 0, movedItem);
     searchUrls = searchUrls;
+  }
+
+  function handleDragOver(event: DragEvent) {
+    event.preventDefault();
+    console.log(event.currentTarget);
+  }
+
+  function handleDragEnd(event: DragEvent) {
+    const currentTarget = event.currentTarget as HTMLElement;
+    currentTarget.style.opacity = '1';
+  }
+
+  function handleDragLeave(event: DragEvent) {
+    const currentTarget = event.currentTarget as HTMLElement;
+    currentTarget.classList.remove('over');
+  }
+
+  function handleDragEnter(event: DragEvent) {
+    const currentTarget = event.currentTarget as HTMLElement;
+    currentTarget.classList.add('over');
   }
 </script>
 
@@ -73,11 +94,12 @@
           class="fieldset-row"
           draggable="true"
           animate:flip={{ duration: 500 }}
-          on:drop={(event) => drop(event, itemIndex)}
-          on:dragstart={(event) => dragStart(event, itemIndex)}
-          on:dragover={(event) => {
-            event.preventDefault();
-          }}
+          on:dragstart={(event) => handleDragStart(event, itemIndex)}
+          on:dragenter={(event) => handleDragEnter(event)}
+          on:dragleave={(event) => handleDragLeave(event)}
+          on:dragover={(event) => handleDragOver(event)}
+          on:dragend={(event) => handleDragEnd(event)}
+          on:drop={(event) => handleDrop(event, itemIndex)}
         >
           <input bind:group={selectedIds} id={item.id} name="id" type="checkbox" value={item.id} />
           <label for={item.id}>
@@ -106,6 +128,10 @@
 
   .filter-label {
     font-size: 1.3rem;
+  }
+
+  .over {
+    border: 10px solid red;
   }
 
   .list-container {
