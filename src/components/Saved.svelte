@@ -91,7 +91,7 @@
   <label class="filter-label" for="id"> Filter </label>
   <input id="id" type="text" bind:value={filter} required />
 </div>
-<form on:submit|preventDefault={handleRemove}>
+<form class="form-container" on:submit|preventDefault={handleRemove}>
   {#if searchUrls.length > 0}
     {@const filteredUrls = searchUrls.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
     <ul class="list-container">
@@ -124,9 +124,12 @@
   {/if}
   <Button variant="outlined-red" type="submit">DELETE</Button>
 </form>
-<p>{selectedIds.toString()}</p>
+{#if selectedIds.length > 0}
+  <p>{selectedIds.toString()}</p>
+{/if}
 
 <style>
+  .form-container,
   .filter-container {
     display: flex;
     gap: 0.5rem;
