@@ -122,11 +122,10 @@
       <p>No results...</p>
     {/if}
   {/if}
-  <Button variant="outlined-red" type="submit">DELETE</Button>
+  {#if selectedIds.length > 0}
+    <Button variant="outlined-red" type="submit">Delete selected</Button>
+  {/if}
 </form>
-{#if selectedIds.length > 0}
-  <p>{selectedIds.toString()}</p>
-{/if}
 
 <style>
   .filter-container {
