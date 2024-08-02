@@ -165,9 +165,12 @@
   }
 
   .fieldset-row label {
+    display: flex;
     font-size: 1rem;
     white-space: nowrap;
     cursor: inherit;
+    max-width: calc(60vw);
+    contain: paint;
   }
 
   .fieldset-row input {
@@ -176,6 +179,8 @@
 
   .fieldset-row label code {
     margin-left: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   input:focus-visible {
