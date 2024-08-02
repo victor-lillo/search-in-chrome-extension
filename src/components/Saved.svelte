@@ -83,7 +83,6 @@
   }
 
   function handleDragEnter(event: DragEvent, itemIndex: number) {
-    console.log(itemIndex);
     hoveredIndex = itemIndex;
   }
 </script>
