@@ -35,9 +35,8 @@
     pattern="https://.*PLACEHOLDER.*"
     required
   />
-  <div class="button-container">
-    <Button variant="primary" type="submit">SAVE</Button>
-  </div>
+
+  <Button variant="primary" type="submit">Save</Button>
 </form>
 
 <style>
@@ -54,12 +53,6 @@
     grid-column: 1;
     min-width: 0;
     white-space: nowrap;
-  }
-
-  .button-container {
-    grid-column: 1 / 3;
-    display: flex;
-    justify-content: center;
   }
 
   input {
