@@ -4,7 +4,6 @@
 
   import { getStorage, setStorage } from '../utils/storage';
   import { STORAGE_KEYS } from '../constants';
-  import addContextMenu from '../utils/addContextMenu';
 
   let searchId: string = '';
   let searchUrl: string = '';
@@ -16,7 +15,6 @@
       url: searchUrl,
     };
 
-    addContextMenu([searchLink]);
     await setStorage({
       [STORAGE_KEYS.searchLinks]: [...storage, searchLink],
     });

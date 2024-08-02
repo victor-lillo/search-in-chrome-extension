@@ -1,7 +1,7 @@
 import { SEARCH_PLACEHOLDER } from '../constants'
 import { type SearchLink } from './presets'
 
-export default function addContextMenu(searchLinks: SearchLink[]) {
+export function addContextMenu(searchLinks: SearchLink[]) {
   for (const { id } of searchLinks) {
     chrome.contextMenus.create({
       id: id,
@@ -21,4 +21,8 @@ export default function addContextMenu(searchLinks: SearchLink[]) {
 
     chrome.tabs.create({ url: url, index: tabIndex + 1 })
   })
+}
+
+export function clearContextMenu() {
+  chrome.contextMenus.removeAll()
 }
