@@ -3,7 +3,6 @@
   import { getStorage, setStorage } from '../utils/storage';
   import { STORAGE_KEYS } from '../constants';
   import Button from './Button.svelte';
-  import Drag from './icons/Drag.svelte';
 
   let filter: string = '';
   let searchUrls: { id: string; url: string }[] = [];
