@@ -99,7 +99,7 @@
       {#each filteredUrls as item, itemIndex (item)}
         <li
           class="fieldset-row"
-          class:over={itemIndex === hoveredIndex}
+          class:fieldset-row--over={itemIndex === hoveredIndex}
           draggable="true"
           animate:flip={{ duration: 500 }}
           on:dragstart={(event) => handleDragStart(event, itemIndex)}
@@ -158,7 +158,7 @@
     border: 1px solid transparent;
   }
 
-  .over {
+  .fieldset-row--over {
     border-color: green;
   }
 
