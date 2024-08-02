@@ -8,6 +8,7 @@
   let filter: string = '';
   let searchUrls: { id: string; url: string }[] = [];
   let selectedIds: string[] = [];
+  let hoveredIndex: number | null = null;
 
   function reactToStorage() {
     chrome.storage.onChanged.addListener(async (changes) => {
@@ -59,11 +60,11 @@
 
     searchUrls.splice(finalItemIndex, 0, movedItem);
     searchUrls = searchUrls;
+    hoveredIndex = null;
   }
 
   function handleDragOver(event: DragEvent) {
     event.preventDefault();
-    console.log(event.currentTarget);
   }
 
   function handleDragEnd(event: DragEvent) {
@@ -72,13 +73,18 @@
   }
 
   function handleDragLeave(event: DragEvent) {
+    // dragleave event fires on children
     const currentTarget = event.currentTarget as HTMLElement;
-    currentTarget.classList.remove('over');
+    const relatedTarget = event.relatedTarget as HTMLElement;
+
+    if (currentTarget.contains(relatedTarget)) return;
+
+    hoveredIndex = null;
   }
 
-  function handleDragEnter(event: DragEvent) {
-    const currentTarget = event.currentTarget as HTMLElement;
-    currentTarget.classList.add('over');
+  function handleDragEnter(event: DragEvent, itemIndex: number) {
+    console.log(itemIndex);
+    hoveredIndex = itemIndex;
   }
 </script>
 
@@ -93,10 +99,11 @@
       {#each filteredUrls as item, itemIndex (item)}
         <li
           class="fieldset-row"
+          class:over={itemIndex === hoveredIndex}
           draggable="true"
           animate:flip={{ duration: 500 }}
           on:dragstart={(event) => handleDragStart(event, itemIndex)}
-          on:dragenter={(event) => handleDragEnter(event)}
+          on:dragenter={(event) => handleDragEnter(event, itemIndex)}
           on:dragleave={(event) => handleDragLeave(event)}
           on:dragover={(event) => handleDragOver(event)}
           on:dragend={(event) => handleDragEnd(event)}
@@ -131,10 +138,6 @@
     font-size: 1.3rem;
   }
 
-  .over {
-    border: 10px solid red;
-  }
-
   .list-container {
     display: grid;
     gap: 1rem;
@@ -152,6 +155,11 @@
     align-items: center;
     gap: 0.5rem;
     cursor: grab;
+    border: 1px solid transparent;
+  }
+
+  .over {
+    border-color: green;
   }
 
   .fieldset-row label {
