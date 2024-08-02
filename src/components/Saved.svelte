@@ -45,7 +45,7 @@
     const data = { itemIndex };
     event.dataTransfer!.effectAllowed = 'move';
     event.dataTransfer?.setData('text/plain', JSON.stringify(data));
-    currentTarget.style.opacity = '0.4';
+    currentTarget.style.opacity = '0.3';
   }
 
   async function handleDrop(event: DragEvent, finalItemIndex: number) {
@@ -153,13 +153,13 @@
     align-items: center;
     gap: 0.5rem;
     cursor: move;
-    border: 1px solid var(--color-dark-4);
+    border: 2px solid var(--color-dark-4);
     border-radius: var(--border-radius-1);
     padding: 0.5rem 1rem;
   }
 
   .fieldset-row--over {
-    border-color: green;
+    border-color: #009e20;
   }
 
   .fieldset-row label {
@@ -177,6 +177,6 @@
   }
 
   input:focus-visible {
-    outline-color: green;
+    outline-color: #009e20;
   }
 </style>
