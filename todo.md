@@ -1,2 +1,1 @@
-- Correctly add Prettier to Svelte (auto collapse tags for non-children components)
 - Prevent save on duplicated ids
