@@ -15,9 +15,8 @@
     flex-direction: column;
     gap: 1rem;
     min-height: 80%;
-    min-width: var(--width-full-page);
     padding-block: 2rem;
-    width: fit-content;
+    width: 100%;
     margin: auto;
   }
 
