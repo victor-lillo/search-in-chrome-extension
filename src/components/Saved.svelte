@@ -166,6 +166,7 @@
 
   .fieldset-row label {
     display: flex;
+    align-items: center;
     font-size: 1rem;
     white-space: nowrap;
     cursor: inherit;
