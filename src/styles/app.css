@@ -19,8 +19,8 @@ body {
 #full-page-app {
   display: grid;
   min-height: 100vh;
-  width: 70%;
-  max-width: 70%;
+  width: var(--width-full-page);
+  max-width: var(--width-full-page);
   margin: auto;
 }
 
