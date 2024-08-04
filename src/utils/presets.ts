@@ -1,9 +1,5 @@
 import { SEARCH_PLACEHOLDER } from '../constants'
-
-export type SearchLink = {
-  id: string
-  url: string
-}
+import type { SearchLink } from '../types'
 
 export type Preset = {
   id: string
@@ -21,6 +17,10 @@ export const DEFAULT: Preset = {
     { id: '💻 GitHub Code', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=code` },
     { id: '📚 GitHub Repositories', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=repositories` },
     { id: '🟠 Reddit', url: `https://www.reddit.com/search/?q=${SEARCH_PLACEHOLDER}` },
+    {
+      id: 'AAAAAAAAAAAA',
+      url: `https://www.reddit.com/search/reddit.com/search/reddit.com/search/reddit.com/search/reddit.com/search/reddit.com/search/reddit.com/search/reddit.com/search/reddit.com/search/reddit.com/search/?q=${SEARCH_PLACEHOLDER}`,
+    },
   ],
 }
 
