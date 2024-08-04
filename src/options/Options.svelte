@@ -1,12 +1,12 @@
 <script lang="ts">
   import Saved from '../components/Saved.svelte';
-  import Form from '../components/Form.svelte';
+  import SaveForm from '../components/SaveForm.svelte';
 </script>
 
 <section>
   <h1>Settings</h1>
   <Saved />
-  <Form />
+  <SaveForm />
 </section>
 
 <style>
