@@ -6,7 +6,7 @@
   import Button from './Button.svelte';
 
   let filter: string = '';
-  let searchUrls: SearchLink[] = [];
+  let savedSearchLinks: SearchLink[] = [];
   let selectedIds: string[] = [];
   let hoveredIndex: number | null = null;
 
@@ -14,7 +14,7 @@
     chrome.storage.onChanged.addListener(async (changes) => {
       for (const [key, { newValue }] of Object.entries(changes)) {
         if (key === STORAGE_KEYS.searchLinks) {
-          searchUrls = newValue;
+          savedSearchLinks = newValue;
         }
       }
     });
@@ -24,7 +24,7 @@
 
   async function getSavedUrls() {
     const preset = await getStorage(STORAGE_KEYS.searchLinks);
-    searchUrls = preset;
+    savedSearchLinks = preset;
   }
 
   getSavedUrls();
@@ -33,8 +33,8 @@
     selectedIds.forEach((element) => {
       chrome.contextMenus.remove(element);
     });
-    const newSearchUrls = searchUrls.filter(({ id }) => !selectedIds.includes(id));
-    searchUrls = newSearchUrls;
+    const newSearchUrls = savedSearchLinks.filter(({ id }) => !selectedIds.includes(id));
+    savedSearchLinks = newSearchUrls;
     await setStorage({ [STORAGE_KEYS.searchLinks]: newSearchUrls });
   }
 
@@ -56,12 +56,12 @@
     const movedItemIndex = data.itemIndex;
 
     // Splice returns an array of the deleted elements, just one in this case.
-    const [movedItem] = searchUrls.splice(movedItemIndex, 1);
+    const [movedItem] = savedSearchLinks.splice(movedItemIndex, 1);
 
-    searchUrls.splice(finalItemIndex, 0, movedItem);
-    searchUrls = searchUrls;
+    savedSearchLinks.splice(finalItemIndex, 0, movedItem);
+    savedSearchLinks = savedSearchLinks;
     hoveredIndex = null;
-    await setStorage({ [STORAGE_KEYS.searchLinks]: searchUrls });
+    await setStorage({ [STORAGE_KEYS.searchLinks]: savedSearchLinks });
   }
 
   function handleDragOver(event: DragEvent) {
@@ -93,8 +93,8 @@
   <input id="id" type="text" bind:value={filter} required />
 </div>
 <form class="form-container" on:submit|preventDefault={handleRemove}>
-  {#if searchUrls.length > 0}
-    {@const filteredUrls = searchUrls.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
+  {#if savedSearchLinks.length > 0}
+    {@const filteredUrls = savedSearchLinks.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
     <ul class="list-container">
       {#each filteredUrls as item, itemIndex (item)}
         <li
