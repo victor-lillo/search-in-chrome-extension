@@ -1,3 +1,4 @@
-import { writable } from 'svelte/store'
+import { writable, type Writable } from 'svelte/store'
+import type { SearchLink } from './types'
 
-export const searchLinks = writable()
+export const searchLinks: Writable<SearchLink[]> = writable()
