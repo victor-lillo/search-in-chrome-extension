@@ -1,22 +1,41 @@
 <script lang="ts">
+  import { searchLinks } from '../store';
+  import { setStorage } from '../utils/storage';
+  import { STORAGE_KEYS } from '../constants';
+  import type { SearchLink } from '../types';
   import Button from './Button.svelte';
   import FormInstructions from './FormInstructions.svelte';
-
-  import { getStorage, setStorage } from '../utils/storage';
-  import { STORAGE_KEYS } from '../constants';
 
   let searchId: string = '';
   let searchUrl: string = '';
 
+  let isAlreadySaved: boolean = false;
+
+  let savedSearchLinks: SearchLink[];
+
+  searchLinks.subscribe((value) => {
+    savedSearchLinks = value;
+  });
+
+  function handleInput() {
+    const isSaved = savedSearchLinks.find(({ id }) => id === searchId);
+    if (isSaved) isAlreadySaved = true;
+    else isAlreadySaved = false;
+  }
+
   async function handleAdd() {
-    const storage = await getStorage(STORAGE_KEYS.searchLinks);
     const searchLink = {
       id: searchId,
       url: searchUrl,
     };
 
+    searchId = '';
+    searchUrl = '';
+
+    searchLinks.update((n) => [...n, searchLink]);
+
     await setStorage({
-      [STORAGE_KEYS.searchLinks]: [...storage, searchLink],
+      [STORAGE_KEYS.searchLinks]: [...savedSearchLinks, searchLink],
     });
   }
 </script>
@@ -25,7 +44,15 @@
 
 <form on:submit|preventDefault={handleAdd}>
   <label for="id"> ID </label>
-  <input id="id" type="text" bind:value={searchId} pattern=".*\S.*" placeholder="👉🏽 Your ID" required />
+  <input
+    id="id"
+    type="text"
+    bind:value={searchId}
+    on:input={handleInput}
+    pattern=".*\S.*"
+    placeholder="👉🏽 Your ID"
+    required
+  />
   <label for="url"> Search url </label>
   <input
     bind:value={searchUrl}
@@ -36,7 +63,10 @@
     required
   />
 
-  <Button variant="primary" type="submit">Save</Button>
+  <Button variant="primary" type="submit" disabled={isAlreadySaved}>Save</Button>
+  {#if isAlreadySaved}
+    <p>Is Already Saved</p>
+  {/if}
 </form>
 
 <style>
