@@ -2,10 +2,11 @@
   import { flip } from 'svelte/animate';
   import { getStorage, setStorage } from '../utils/storage';
   import { STORAGE_KEYS } from '../constants';
+  import type { SearchLink } from '../types';
   import Button from './Button.svelte';
 
   let filter: string = '';
-  let searchUrls: { id: string; url: string }[] = [];
+  let searchUrls: SearchLink[] = [];
   let selectedIds: string[] = [];
   let hoveredIndex: number | null = null;
 
