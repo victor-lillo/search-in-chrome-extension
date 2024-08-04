@@ -1,40 +1,29 @@
 <script lang="ts">
   import { flip } from 'svelte/animate';
-  import { getStorage, setStorage } from '../utils/storage';
+  import { searchLinks } from '../store';
+  import { setStorage } from '../utils/storage';
   import { STORAGE_KEYS } from '../constants';
   import type { SearchLink } from '../types';
   import Button from './Button.svelte';
 
   let filter: string = '';
-  let savedSearchLinks: SearchLink[] = [];
   let selectedIds: string[] = [];
   let hoveredIndex: number | null = null;
 
-  function reactToStorage() {
-    chrome.storage.onChanged.addListener(async (changes) => {
-      for (const [key, { newValue }] of Object.entries(changes)) {
-        if (key === STORAGE_KEYS.searchLinks) {
-          savedSearchLinks = newValue;
-        }
-      }
-    });
-  }
+  let savedSearchLinks: SearchLink[];
 
-  reactToStorage();
-
-  async function getSavedUrls() {
-    const preset = await getStorage(STORAGE_KEYS.searchLinks);
-    savedSearchLinks = preset;
-  }
-
-  getSavedUrls();
+  searchLinks.subscribe((value) => {
+    savedSearchLinks = value;
+  });
 
   async function handleRemove() {
     selectedIds.forEach((element) => {
       chrome.contextMenus.remove(element);
     });
     const newSearchUrls = savedSearchLinks.filter(({ id }) => !selectedIds.includes(id));
-    savedSearchLinks = newSearchUrls;
+
+    searchLinks.set(newSearchUrls);
+
     await setStorage({ [STORAGE_KEYS.searchLinks]: newSearchUrls });
   }
 
@@ -55,11 +44,14 @@
     const data = JSON.parse(json);
     const movedItemIndex = data.itemIndex;
 
+    const copy = savedSearchLinks;
     // Splice returns an array of the deleted elements, just one in this case.
-    const [movedItem] = savedSearchLinks.splice(movedItemIndex, 1);
+    const [movedItem] = copy.splice(movedItemIndex, 1);
 
-    savedSearchLinks.splice(finalItemIndex, 0, movedItem);
-    savedSearchLinks = savedSearchLinks;
+    copy.splice(finalItemIndex, 0, movedItem);
+
+    searchLinks.set(copy);
+
     hoveredIndex = null;
     await setStorage({ [STORAGE_KEYS.searchLinks]: savedSearchLinks });
   }
@@ -93,8 +85,8 @@
   <input id="id" type="text" bind:value={filter} required />
 </div>
 <form class="form-container" on:submit|preventDefault={handleRemove}>
-  {#if savedSearchLinks.length > 0}
-    {@const filteredUrls = savedSearchLinks.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
+  {#if $searchLinks.length > 0}
+    {@const filteredUrls = $searchLinks.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
     <ul class="list-container">
       {#each filteredUrls as item, itemIndex (item)}
         <li
