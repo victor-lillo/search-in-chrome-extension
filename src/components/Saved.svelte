@@ -10,7 +10,7 @@
   let selectedIds: string[] = [];
   let hoveredIndex: number | null = null;
 
-  let savedSearchLinks: SearchLink[];
+  let savedSearchLinks: SearchLink[] = [];
 
   searchLinks.subscribe((value) => {
     savedSearchLinks = value;
@@ -82,8 +82,8 @@
   <input id="id" type="text" bind:value={filter} required />
 </div>
 <form class="form-container" on:submit|preventDefault={handleRemove}>
-  {#if $searchLinks.length > 0}
-    {@const filteredUrls = $searchLinks.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
+  {#if savedSearchLinks.length > 0}
+    {@const filteredUrls = savedSearchLinks.filter(({ id, url }) => id.includes(filter) || url.includes(filter))}
     <ul class="list-container">
       {#each filteredUrls as item, itemIndex (item)}
         <li
