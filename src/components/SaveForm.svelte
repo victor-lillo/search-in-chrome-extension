@@ -34,7 +34,7 @@
     searchLinks.update((n) => [...n, searchLink]);
 
     await setStorage({
-      [STORAGE_KEYS.searchLinks]: [...savedSearchLinks, searchLink],
+      [STORAGE_KEYS.searchLinks]: savedSearchLinks,
     });
   }
 </script>
