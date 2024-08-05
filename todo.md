@@ -1,2 +1,1 @@
-- Prevent save on duplicated ids
-- Centralize savedSearchLinks source of truth
+- Review searchLinks source of truth & contextMenu flow
