@@ -45,6 +45,7 @@
   <label for="id"> ID </label>
   <input
     id="id"
+    class:invalid={isAlreadySaved}
     type="text"
     bind:value={searchId}
     on:input={handleInput}
@@ -64,7 +65,7 @@
 
   <Button variant="primary" type="submit" disabled={isAlreadySaved}>Save</Button>
   {#if isAlreadySaved}
-    <p>Is Already Saved</p>
+    <p><strong>{searchId}</strong> is already in use. Choose a different one.</p>
   {/if}
 </form>
 
@@ -73,6 +74,7 @@
     display: grid;
     grid-template-columns: min-content 1fr;
     column-gap: 0.5rem;
+    align-items: center;
     row-gap: 1rem;
   }
 
@@ -89,6 +91,7 @@
     outline: 2px solid transparent;
     border-radius: var(--border-radius-1);
     padding-left: 0.5rem;
+    align-self: stretch;
     border: none;
   }
 
@@ -96,7 +99,7 @@
     outline-color: green;
   }
 
-  input:not(:placeholder-shown):is(:invalid, :invalid:focus-visible) {
+  input:not(:placeholder-shown):is(:invalid, :invalid:focus-visible, .invalid) {
     outline-color: red;
   }
 </style>
