@@ -1,5 +1,5 @@
 import { SEARCH_PLACEHOLDER } from '../constants'
-import { type SearchLink } from './presets'
+import { type SearchLink } from '../types'
 
 export function addContextMenu(searchLinks: SearchLink[]) {
   for (const { id } of searchLinks) {
