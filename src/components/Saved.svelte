@@ -154,7 +154,7 @@
   }
 
   .fieldset-row--over {
-    border-color: #009e20;
+    border-color: var(--color-green);
   }
 
   .fieldset-row label {
@@ -178,6 +178,6 @@
   }
 
   input:focus-visible {
-    outline-color: #009e20;
+    outline-color: var(--color-green);
   }
 </style>

@@ -55,17 +55,17 @@
   }
 
   .dev-red {
-    --background-color: crimson;
-    --border-color: #ffcd07;
+    --background-color: var(--color-red);
+    --border-color: var(--color-yellow);
   }
 
   .dev-green {
-    --background-color: #009e20;
-    --border-color: #ffcd07;
+    --background-color: var(--color-green);
+    --border-color: var(--color-yellow);
   }
 
   .primary {
-    --background-color: #009e20;
+    --background-color: var(--color-green);
   }
 
   .secondary {
@@ -74,8 +74,9 @@
 
   .outlined-white {
     --background-color: transparent;
-    color: var(--color-light-1);
     --border-color: var(--color-light-1);
+
+    color: var(--color-light-1);
   }
 
   .outlined-white:hover {
@@ -84,8 +85,9 @@
 
   .outlined-red {
     --background-color: transparent;
-    color: crimson;
-    --border-color: crimson;
+    --border-color: var(--color-red);
+
+    color: var(--color-red);
   }
 
   .outlined-red:hover {

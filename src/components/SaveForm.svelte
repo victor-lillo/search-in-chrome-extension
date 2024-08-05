@@ -96,10 +96,10 @@
   }
 
   input:is(:focus-visible, :valid, :valid:focus-visible) {
-    outline-color: green;
+    outline-color: var(--color-green);
   }
 
   input:not(:placeholder-shown):is(:invalid, :invalid:focus-visible, .invalid) {
-    outline-color: red;
+    outline-color: var(--color-red);
   }
 </style>

@@ -12,6 +12,10 @@
   --color-dark-3: #262626;
   --color-dark-4: #333333;
 
+  --color-green: #009e20;
+  --color-yellow: #ffcd07;
+  --color-red: crimson;
+
   --color-accent-grey: #dbdbdb;
 
   --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
