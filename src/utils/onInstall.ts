@@ -1,10 +1,8 @@
 import { DEFAULT } from './presets'
 import { setStorage } from './storage'
 import { STORAGE_KEYS } from '../constants'
-import { searchLinks } from '../store'
 
 async function initStorage() {
-  searchLinks.set(DEFAULT.searchLinks)
   await setStorage({ [STORAGE_KEYS.searchLinks]: DEFAULT.searchLinks })
 }
 
