@@ -8,7 +8,6 @@
 
   let searchId: string = '';
   let searchUrl: string = '';
-
   let isAlreadySaved: boolean = false;
 
   let savedSearchLinks: SearchLink[];
