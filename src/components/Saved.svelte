@@ -23,6 +23,7 @@
     const newSearchUrls = savedSearchLinks.filter(({ id }) => !selectedIds.includes(id));
 
     searchLinks.set(newSearchUrls);
+    selectedIds = [];
 
     await setStorage({ [STORAGE_KEYS.searchLinks]: newSearchUrls });
   }
