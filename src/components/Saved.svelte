@@ -21,7 +21,6 @@
       chrome.contextMenus.remove(element);
     });
     const newSearchUrls = savedSearchLinks.filter(({ id }) => !selectedIds.includes(id));
-
     searchLinks.set(newSearchUrls);
     selectedIds = [];
 
