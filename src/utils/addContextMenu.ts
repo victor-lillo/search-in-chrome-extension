@@ -1,4 +1,3 @@
-import { SEARCH_PLACEHOLDER } from '../constants'
 import { type SearchLink } from '../types'
 
 export function addContextMenu(searchLinks: SearchLink[]) {
@@ -10,17 +9,6 @@ export function addContextMenu(searchLinks: SearchLink[]) {
       contexts: ['selection'],
     })
   }
-  // Open a new search tab when the user clicks a context menu
-  chrome.contextMenus.onClicked.addListener((item, tab) => {
-    const tabIndex = tab!.index
-    const selectionText = item.selectionText!
-    const menuItemId = item.menuItemId
-    const selectedSearchUrl = searchLinks.find(({ id }) => id === menuItemId)?.url
-    if (!selectedSearchUrl) return
-    const url = selectedSearchUrl.replace(SEARCH_PLACEHOLDER, selectionText)
-
-    chrome.tabs.create({ url: url, index: tabIndex + 1 })
-  })
 }
 
 export function clearContextMenu() {
