@@ -77,6 +77,7 @@
   }
 </script>
 
+<h1>Your saved queries</h1>
 <div class="filter-container">
   <label class="filter-label" for="id"> Filter </label>
   <input id="id" type="text" bind:value={filter} required />

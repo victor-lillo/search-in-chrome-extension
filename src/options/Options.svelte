@@ -1,12 +1,17 @@
 <script lang="ts">
   import Saved from '../components/Saved.svelte';
   import SaveForm from '../components/SaveForm.svelte';
+  import Presets from '../components/Presets.svelte';
 </script>
 
 <section>
-  <h1>Settings</h1>
   <Saved />
+</section>
+<section>
   <SaveForm />
+</section>
+<section>
+  <Presets />
 </section>
 
 <style>
@@ -20,7 +25,9 @@
     margin: auto;
   }
 
-  h1 {
+  :global(h1) {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid grey;
   }
 </style>

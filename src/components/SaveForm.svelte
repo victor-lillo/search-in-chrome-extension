@@ -39,6 +39,7 @@
   }
 </script>
 
+<h1>Add new queries</h1>
 <FormInstructions />
 
 <form on:submit|preventDefault={handleAdd}>
