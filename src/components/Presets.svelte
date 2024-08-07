@@ -27,18 +27,18 @@
 <h1>Presets</h1>
 <form>
   {#each PRESETS as { label, searchLinks: presetSearchLinks }}
-    <section>
-      <div>{label}</div>
+    <p>{label}</p>
+    <ul>
       {#each presetSearchLinks as { id, url }}
-        <p class="p">
+        <li class="row">
           {id}
           <code>{url}</code>
-        </p>
+        </li>
       {/each}
-      <Button variant="primary" type="submit" disabled={isAlreadySaved} on:click={() => handleAdd(presetSearchLinks)}>
-        Add
-      </Button>
-    </section>
+    </ul>
+    <Button variant="primary" type="submit" disabled={isAlreadySaved} on:click={() => handleAdd(presetSearchLinks)}>
+      Add
+    </Button>
   {/each}
 
   {#if isAlreadySaved}
@@ -55,7 +55,13 @@
     row-gap: 1rem;
   }
 
-  .p {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .row {
     display: flex;
     align-items: center;
     font-size: 1rem;
