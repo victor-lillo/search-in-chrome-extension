@@ -13,19 +13,18 @@ export const DEFAULT: Preset = {
   searchLinks: [
     { id: '🌐 Google', url: `https://google.com/search?q=${SEARCH_PLACEHOLDER}` },
     { id: '🍊 Google + Reddit', url: `https://google.com/search?q=reddit ${SEARCH_PLACEHOLDER}` },
-    { id: '🤖 StackOverflow', url: `https://stackoverflow.com/search?q=${SEARCH_PLACEHOLDER}` },
-    { id: '💻 GitHub Code', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=code` },
-    { id: '📚 GitHub Repositories', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=repositories` },
     { id: '🟠 Reddit', url: `https://www.reddit.com/search/?q=${SEARCH_PLACEHOLDER}` },
   ],
 }
 
-export const DEV: Preset = {
-  id: 'dev',
-  label: 'Dev preset',
-  searchLinks: [
-    { id: '🤖 StackOverflow', url: `https://stackoverflow.com/search?q=${SEARCH_PLACEHOLDER}` },
-    { id: '💻 GitHub Code', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=code` },
-    { id: '📚 GitHub Repositories', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=repositories` },
-  ],
-}
+export const PRESETS: Preset[] = [
+  {
+    id: 'dev',
+    label: 'Dev preset',
+    searchLinks: [
+      { id: '🤖 StackOverflow', url: `https://stackoverflow.com/search?q=${SEARCH_PLACEHOLDER}` },
+      { id: '💻 GitHub Code', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=code` },
+      { id: '📚 GitHub Repositories', url: `https://github.com/search?q=${SEARCH_PLACEHOLDER}&type=repositories` },
+    ],
+  },
+]
