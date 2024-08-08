@@ -14,12 +14,13 @@
     savedSearchLinks = value;
   });
 
-  async function handleAdd(addedSearchLinks: SearchLink[]) {
-    console.log(addedSearchLinks);
-    searchLinks.update((n) => [...n]);
+  async function handleAdd(e: MouseEvent, addedSearchLinks: SearchLink[]) {
+    e.preventDefault();
 
+    const nonDuplicated = [...new Set([...savedSearchLinks, ...addedSearchLinks])];
+    searchLinks.set(nonDuplicated);
     await setStorage({
-      [STORAGE_KEYS.searchLinks]: savedSearchLinks,
+      [STORAGE_KEYS.searchLinks]: nonDuplicated,
     });
   }
 </script>
@@ -36,7 +37,12 @@
         </li>
       {/each}
     </ul>
-    <Button variant="primary" type="submit" disabled={isAlreadySaved} on:click={() => handleAdd(presetSearchLinks)}>
+    <Button
+      variant="primary"
+      type="submit"
+      disabled={isAlreadySaved}
+      handleClick={(e) => handleAdd(e, presetSearchLinks)}
+    >
       Add
     </Button>
   {/each}
