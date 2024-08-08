@@ -6,8 +6,8 @@
   import type { SearchLink } from '../types';
   import Button from './Button.svelte';
 
-  let alreadyAddedIds: SearchLink[] = [];
-  let newAddedIds: SearchLink[] = [];
+  let alreadyAddedSearchLinks: SearchLink[] = [];
+  let newAddedSearchLinks: SearchLink[] = [];
   let savedSearchLinks: SearchLink[] = [];
 
   searchLinks.subscribe((value) => {
@@ -17,22 +17,22 @@
   async function handleAdd(e: MouseEvent, addedSearchLinks: SearchLink[]) {
     e.preventDefault();
 
-    alreadyAddedIds = savedSearchLinks.filter((el) => addedSearchLinks.some((element) => element.id === el.id));
-    newAddedIds = addedSearchLinks.filter((el) => !savedSearchLinks.some((element) => element.id === el.id));
+    alreadyAddedSearchLinks = savedSearchLinks.filter((el) => addedSearchLinks.some((element) => element.id === el.id));
+    newAddedSearchLinks = addedSearchLinks.filter((el) => !savedSearchLinks.some((element) => element.id === el.id));
 
-    const nonDuplicated = [...savedSearchLinks, ...newAddedIds];
+    const nonDuplicated = [...savedSearchLinks, ...newAddedSearchLinks];
     searchLinks.set(nonDuplicated);
 
     await setStorage({
       [STORAGE_KEYS.searchLinks]: nonDuplicated,
     });
 
-    if (alreadyAddedIds.length > 0) {
+    if (alreadyAddedSearchLinks.length > 0) {
       const formatter = new Intl.ListFormat('en', {
         style: 'long',
         type: 'conjunction',
       });
-      const addedText = `${formatter.format(alreadyAddedIds.map(({ id }) => id))} were already added.`;
+      const addedText = `${formatter.format(alreadyAddedSearchLinks.map(({ id }) => id))} were already added.`;
 
       alert(addedText);
     }
@@ -54,7 +54,7 @@
     <Button variant="primary" type="submit" handleClick={(e) => handleAdd(e, presetSearchLinks)}>Add</Button>
   {/each}
 
-  {#if alreadyAddedIds.length > 0}
+  {#if alreadyAddedSearchLinks.length > 0}
     <p><strong></strong> is already in use. Choose a different one.</p>
   {/if}
 </form>
