@@ -20,6 +20,17 @@
     alreadyAddedSearchLinks = savedSearchLinks.filter((el) => addedSearchLinks.some((element) => element.id === el.id));
     newAddedSearchLinks = addedSearchLinks.filter((el) => !savedSearchLinks.some((element) => element.id === el.id));
 
+    if (newAddedSearchLinks.length === 0) {
+      const formatter = new Intl.ListFormat('en', {
+        style: 'long',
+        type: 'conjunction',
+      });
+      const addedText = `${formatter.format(addedSearchLinks.map(({ id }) => id))} were already saved, there is nothing to add.`;
+
+      alert(addedText);
+      return;
+    }
+
     const nonDuplicated = [...savedSearchLinks, ...newAddedSearchLinks];
     searchLinks.set(nonDuplicated);
 
