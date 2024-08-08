@@ -27,8 +27,8 @@
 <h1>Presets</h1>
 <form>
   {#each PRESETS as { label, searchLinks: presetSearchLinks }}
-    <p>{label}</p>
-    <ul>
+    <h3 class="title">{label}</h3>
+    <ul class="list">
       {#each presetSearchLinks as { id, url }}
         <li class="row">
           {id}
@@ -48,14 +48,16 @@
 
 <style>
   form {
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    column-gap: 0.5rem;
-    align-items: center;
-    row-gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  ul {
+  .title {
+    font-size: 2rem;
+  }
+
+  .list {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -64,10 +66,10 @@
   .row {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
     font-size: 1rem;
     white-space: nowrap;
     cursor: inherit;
     contain: paint;
-    border: 1px solid white;
   }
 </style>
