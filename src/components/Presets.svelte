@@ -25,7 +25,7 @@
         style: 'long',
         type: 'conjunction',
       });
-      const addedText = `${formatter.format(addedSearchLinks.map(({ id }) => id))} were already saved, there is nothing to add.`;
+      const addedText = `❌ ${formatter.format(addedSearchLinks.map(({ id }) => id))} were already saved, there is nothing to add.`;
 
       alert(addedText);
       return;
@@ -43,7 +43,7 @@
         style: 'long',
         type: 'conjunction',
       });
-      const addedText = `${formatter.format(alreadyAddedSearchLinks.map(({ id }) => id))} were already added.`;
+      const addedText = `✅ ${formatter.format(newAddedSearchLinks.map(({ id }) => id))} added successfully.\n❌ ${formatter.format(alreadyAddedSearchLinks.map(({ id }) => id))} were already added.`;
 
       alert(addedText);
     }
