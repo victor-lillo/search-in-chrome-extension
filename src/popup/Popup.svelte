@@ -1,6 +1,6 @@
 <script lang="ts">
   import Button from '../components/Button.svelte';
-  import SaveForm from '../components/SaveForm.svelte';
+  import AddSearchLinks from '../components/AddSearchLinks.svelte';
   import Settings from '../components/icons/Settings.svelte';
 
   const openOptionsPage = () => {
@@ -9,7 +9,7 @@
 </script>
 
 <section>
-  <SaveForm />
+  <AddSearchLinks />
   <Button variant="outlined-white" handleClick={openOptionsPage}>Open options <Settings /></Button>
 </section>
 

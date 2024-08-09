@@ -5,7 +5,9 @@
   import { STORAGE_KEYS } from '../constants';
   import type { SearchLink } from '../types';
   import Button from './Button.svelte';
+  import AddSearchLinks from './AddSearchLinks.svelte';
 
+  let isEditing: boolean = false;
   let filter: string = '';
   let selectedIds: string[] = [];
   let hoveredIndex: number | null = null;
@@ -75,6 +77,13 @@
   function handleDragEnter(event: DragEvent, itemIndex: number) {
     hoveredIndex = itemIndex;
   }
+
+  function handleEdit(selectedIds: string[]) {
+    console.log('click');
+    const selected = savedSearchLinks.find(({ id }) => selectedIds.includes(id));
+    console.log(selected);
+    isEditing = true;
+  }
 </script>
 
 <h1>Your saved queries</h1>
@@ -113,8 +122,19 @@
       <p>No results...</p>
     {/if}
   {/if}
+
   {#if selectedIds.length > 0}
-    <Button variant="outlined-red" type="submit">Delete selected</Button>
+    <div class="buttons-container">
+      <Button variant="outlined-red" type="submit">Delete selected</Button>
+      {#if selectedIds.length === 1}
+        <Button variant="outlined-green" handleClick={() => handleEdit(selectedIds)} type="button">Edit selected</Button
+        >
+      {/if}
+    </div>
+  {/if}
+
+  {#if isEditing}
+    <AddSearchLinks />
   {/if}
 </form>
 
@@ -177,5 +197,10 @@
 
   input:focus-visible {
     outline-color: var(--color-green);
+  }
+
+  .buttons-container {
+    display: flex;
+    gap: 0.5rem;
   }
 </style>
