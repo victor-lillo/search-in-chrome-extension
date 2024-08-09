@@ -1,7 +1,14 @@
 <script lang="ts">
   import type { MouseEventHandler } from 'svelte/elements';
 
-  type Variants = 'dev-red' | 'dev-green' | 'primary' | 'secondary' | 'outlined-red' | 'outlined-white';
+  type Variants =
+    | 'dev-green'
+    | 'dev-red'
+    | 'outlined-green'
+    | 'outlined-red'
+    | 'outlined-white'
+    | 'primary'
+    | 'secondary';
   export let ariaLabel: string | undefined = undefined;
   export let disabled = false;
   export let handleClick: MouseEventHandler<HTMLButtonElement> | undefined = undefined;
@@ -70,6 +77,17 @@
 
   .secondary {
     --background-color: #9328cc;
+  }
+
+  .outlined-green {
+    --background-color: transparent;
+    --border-color: var(--color-green);
+
+    color: var(--color-green);
+  }
+
+  .outlined-green:hover {
+    --background-color: #009e2048;
   }
 
   .outlined-white {
