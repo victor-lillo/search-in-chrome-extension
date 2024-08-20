@@ -5,13 +5,13 @@
   import { STORAGE_KEYS } from '../constants';
   import type { SearchLink } from '../types';
   import Button from './Button.svelte';
-  import AddSearchLinks from './AddSearchLinks.svelte';
+  import EditSearchLink from './EditSearchLink.svelte';
 
   let isEditing: boolean = false;
   let filter: string = '';
   let selectedIds: string[] = [];
   let hoveredIndex: number | null = null;
-
+  let editSearchLink: SearchLink | null = null;
   let savedSearchLinks: SearchLink[] = [];
 
   searchLinks.subscribe((value) => {
@@ -79,9 +79,8 @@
   }
 
   function handleEdit(selectedIds: string[]) {
-    console.log('click');
-    const selected = savedSearchLinks.find(({ id }) => selectedIds.includes(id));
-    console.log(selected);
+    editSearchLink = savedSearchLinks.find(({ id }) => selectedIds.includes(id))!;
+
     isEditing = true;
   }
 </script>
@@ -133,8 +132,9 @@
     </div>
   {/if}
 
-  {#if isEditing}
-    <AddSearchLinks />
+  {#if isEditing && editSearchLink}
+    <h1>Edit</h1>
+    <EditSearchLink searchId={editSearchLink.id} searchUrl={editSearchLink.url} />
   {/if}
 </form>
 
