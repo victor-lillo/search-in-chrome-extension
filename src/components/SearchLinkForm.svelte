@@ -1,6 +1,5 @@
 <script lang="ts">
   import Button from './Button.svelte';
-  import FormInstructions from './FormInstructions.svelte';
 
   let searchId: string = '';
   let searchUrl: string = '';
@@ -8,8 +7,6 @@
   export let handleInput;
   export let handleAdd;
 </script>
-
-<FormInstructions />
 
 <form on:submit|preventDefault={handleAdd}>
   <label for="id"> ID </label>
