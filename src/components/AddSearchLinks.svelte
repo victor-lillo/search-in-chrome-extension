@@ -8,7 +8,7 @@
 
   let searchId: string = '';
   let searchUrl: string = '';
-  let isAlreadySaved: boolean = false;
+  let isInvalidInput: boolean = false;
 
   let savedSearchLinks: SearchLink[];
 
@@ -18,8 +18,8 @@
 
   function handleInput() {
     const isSaved = savedSearchLinks.find(({ id }) => id === searchId);
-    if (isSaved) isAlreadySaved = true;
-    else isAlreadySaved = false;
+    if (isSaved) isInvalidInput = true;
+    else isInvalidInput = false;
   }
 
   async function handleAdd() {
@@ -45,7 +45,7 @@
   <label for="id"> ID </label>
   <input
     id="id"
-    class:invalid={isAlreadySaved}
+    class:invalid={isInvalidInput}
     type="text"
     bind:value={searchId}
     on:input={handleInput}
@@ -63,8 +63,8 @@
     required
   />
 
-  <Button variant="primary" type="submit" disabled={isAlreadySaved}>Save</Button>
-  {#if isAlreadySaved}
+  <Button variant="primary" type="submit" disabled={isInvalidInput}>Save</Button>
+  {#if isInvalidInput}
     <p><strong>{searchId}</strong> is already in use. Choose a different one.</p>
   {/if}
 </form>
