@@ -1,6 +1,6 @@
 <script lang="ts">
   import Button from '../components/Button.svelte';
-  import AddSearchLinks from '../components/AddSearchLinks.svelte';
+  import AddSearchLink from '../components/AddSearchLink.svelte';
   import Settings from '../components/icons/Settings.svelte';
 
   const openOptionsPage = () => {
@@ -10,7 +10,7 @@
 
 <section>
   <h1>Add new queries</h1>
-  <AddSearchLinks />
+  <AddSearchLink />
   <Button variant="outlined-white" handleClick={openOptionsPage}>Open options <Settings /></Button>
 </section>
 
