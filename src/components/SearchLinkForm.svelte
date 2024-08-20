@@ -1,8 +1,8 @@
 <script lang="ts">
   import Button from './Button.svelte';
 
-  let searchId: string = '';
-  let searchUrl: string = '';
+  export let searchUrl: string = '';
+  export let searchId: string = '';
   export let isInvalidInput: boolean = false;
   export let handleInput;
   export let handleAdd;
