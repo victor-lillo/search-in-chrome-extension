@@ -31,6 +31,8 @@
   />
 
   <Button variant="primary" type="submit" disabled={isInvalidInput}>Save</Button>
+  <slot name="cancel-button"></slot>
+
   {#if isInvalidInput}
     <p><strong>{searchId}</strong> is already in use. Choose a different one.</p>
   {/if}

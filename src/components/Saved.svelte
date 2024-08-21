@@ -140,7 +140,6 @@
   {#if isEditing && editSearchLink}
     <h1>Edit</h1>
     <EditSearchLink bind:isEditing={isEditing} searchId={editSearchLink.id} searchUrl={editSearchLink.url} />
-    <button type="button" on:click={() => (isEditing = false)}>Cancel</button>
   {/if}
 </form>
 

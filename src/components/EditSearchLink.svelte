@@ -4,6 +4,7 @@
   import { STORAGE_KEYS } from '../constants';
   import type { SearchLink } from '../types';
 
+  import Button from './Button.svelte';
   import SearchLinkForm from './SearchLinkForm.svelte';
 
   export let searchId: string = '';
@@ -49,7 +50,11 @@
   handleAdd={handleAdd}
   handleInput={handleInput}
   isInvalidInput={isInvalidInput}
-/>
+>
+  <Button variant="outlined-red" slot="cancel-button" type="button" handleClick={() => (isEditing = false)}>
+    Cancel
+  </Button>
+</SearchLinkForm>
 
 <style>
 </style>
