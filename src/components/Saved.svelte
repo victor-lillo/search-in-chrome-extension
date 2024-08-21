@@ -16,6 +16,11 @@
 
   searchLinks.subscribe((value) => {
     savedSearchLinks = value;
+    // If edited, the length is the same
+    if (savedSearchLinks.length === value.length) {
+      // We need to reset the selectedIds when editing, cause Svelte doesn't do it, so the old value would be still in this array
+      selectedIds = [];
+    }
   });
 
   async function handleRemove() {
@@ -134,12 +139,8 @@
 
   {#if isEditing && editSearchLink}
     <h1>Edit</h1>
-    <EditSearchLink
-      bind:isEditing={isEditing}
-      bind:selectedIds={selectedIds}
-      searchId={editSearchLink.id}
-      searchUrl={editSearchLink.url}
-    />
+    <EditSearchLink bind:isEditing={isEditing} searchId={editSearchLink.id} searchUrl={editSearchLink.url} />
+    <button type="button" on:click={() => (isEditing = false)}>Cancel</button>
   {/if}
 </form>
 
