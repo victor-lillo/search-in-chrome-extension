@@ -8,6 +8,7 @@
 
   export let searchId: string = '';
   const initialSearchId = searchId;
+  export let selectedIds: string[];
   export let searchUrl: string = '';
   export let isEditing: boolean;
   let isInvalidInput: boolean = false;
@@ -40,6 +41,7 @@
       [STORAGE_KEYS.searchLinks]: copy,
     });
     isEditing = false;
+    selectedIds = [];
   }
 </script>
 
