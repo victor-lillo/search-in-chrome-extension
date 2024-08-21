@@ -7,6 +7,7 @@
   import SearchLinkForm from './SearchLinkForm.svelte';
 
   export let searchId: string = '';
+  const initialSearchId = searchId;
   export let searchUrl: string = '';
   let isInvalidInput: boolean = false;
 
@@ -17,7 +18,7 @@
   });
 
   function handleInput() {
-    const isSaved = savedSearchLinks.find(({ id }) => id === searchId);
+    const isSaved = savedSearchLinks.find(({ id }) => id === searchId && id !== initialSearchId);
     if (isSaved) isInvalidInput = true;
     else isInvalidInput = false;
   }
@@ -28,20 +29,21 @@
       url: searchUrl,
     };
 
-    searchId = '';
-    searchUrl = '';
+    const editIndex = savedSearchLinks.findIndex(({ id }) => id === initialSearchId);
 
-    searchLinks.update((n) => [...n, searchLink]);
+    const copy = savedSearchLinks;
+    copy[editIndex] = searchLink;
 
+    searchLinks.set(copy);
     await setStorage({
-      [STORAGE_KEYS.searchLinks]: savedSearchLinks,
+      [STORAGE_KEYS.searchLinks]: copy,
     });
   }
 </script>
 
 <SearchLinkForm
-  searchId={searchId}
-  searchUrl={searchUrl}
+  bind:searchId={searchId}
+  bind:searchUrl={searchUrl}
   handleAdd={handleAdd}
   handleInput={handleInput}
   isInvalidInput={isInvalidInput}
