@@ -40,4 +40,10 @@
 </script>
 
 <FormInstructions />
-<SearchLinkForm handleAdd={handleAdd} handleInput={handleInput} isInvalidInput={isInvalidInput} />
+<SearchLinkForm
+  bind:searchId={searchId}
+  bind:searchUrl={searchUrl}
+  handleAdd={handleAdd}
+  handleInput={handleInput}
+  isInvalidInput={isInvalidInput}
+/>
