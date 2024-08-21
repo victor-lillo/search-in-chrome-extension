@@ -64,11 +64,15 @@
     border: none;
   }
 
-  input:is(:focus-visible, :valid, :valid:focus-visible) {
+  input:not(:placeholder-shown):valid {
     outline-color: var(--color-green);
   }
 
-  input:not(:placeholder-shown):is(:invalid, :invalid:focus-visible, .invalid) {
+  input:not(:placeholder-shown):is(:invalid, .invalid) {
     outline-color: var(--color-red);
+  }
+
+  input:focus:invalid {
+    outline-color: var(--color-yellow);
   }
 </style>
