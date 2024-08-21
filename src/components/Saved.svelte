@@ -137,7 +137,7 @@
     </div>
   {/if}
 
-  {#if isEditing && editSearchLink}
+  {#if isEditing && editSearchLink && selectedIds.length === 1}
     <h1>Edit</h1>
     <EditSearchLink bind:isEditing={isEditing} searchId={editSearchLink.id} searchUrl={editSearchLink.url} />
   {/if}
