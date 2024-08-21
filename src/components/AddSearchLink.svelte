@@ -39,6 +39,5 @@
   }
 </script>
 
-<h1>Add new query</h1>
 <FormInstructions />
 <SearchLinkForm handleAdd={handleAdd} handleInput={handleInput} isInvalidInput={isInvalidInput} />

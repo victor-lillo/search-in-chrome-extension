@@ -9,7 +9,7 @@
 </script>
 
 <section>
-  <h1>Add new queries</h1>
+  <h1>Add new query</h1>
   <AddSearchLink />
   <Button variant="outlined-white" handleClick={openOptionsPage}>Open options <Settings /></Button>
 </section>

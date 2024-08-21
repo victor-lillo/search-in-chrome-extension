@@ -8,6 +8,7 @@
   <Saved />
 </section>
 <section>
+  <h1>Add new query</h1>
   <AddSearchLink />
 </section>
 <section>
