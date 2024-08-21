@@ -20,6 +20,14 @@
     alreadyAddedSearchLinks = savedSearchLinks.filter((el) => addedSearchLinks.some((element) => element.id === el.id));
     newAddedSearchLinks = addedSearchLinks.filter((el) => !savedSearchLinks.some((element) => element.id === el.id));
 
+    const nonDuplicated = [...savedSearchLinks, ...newAddedSearchLinks];
+    searchLinks.set(nonDuplicated);
+
+    await setStorage({
+      [STORAGE_KEYS.searchLinks]: nonDuplicated,
+    });
+
+    // All have already been added
     if (newAddedSearchLinks.length === 0) {
       const formatter = new Intl.ListFormat('en', {
         style: 'long',
@@ -30,20 +38,23 @@
       alert(addedText);
       return;
     }
-
-    const nonDuplicated = [...savedSearchLinks, ...newAddedSearchLinks];
-    searchLinks.set(nonDuplicated);
-
-    await setStorage({
-      [STORAGE_KEYS.searchLinks]: nonDuplicated,
-    });
-
-    if (alreadyAddedSearchLinks.length > 0) {
+    // Some have already been added
+    else if (alreadyAddedSearchLinks.length > 0) {
       const formatter = new Intl.ListFormat('en', {
         style: 'long',
         type: 'conjunction',
       });
       const addedText = `✅ ${formatter.format(newAddedSearchLinks.map(({ id }) => id))} added successfully.\n❌ ${formatter.format(alreadyAddedSearchLinks.map(({ id }) => id))} were already added.`;
+
+      alert(addedText);
+    }
+    // All additions are new
+    else {
+      const formatter = new Intl.ListFormat('en', {
+        style: 'long',
+        type: 'conjunction',
+      });
+      const addedText = `✅ ${formatter.format(newAddedSearchLinks.map(({ id }) => id))} added successfully.\n`;
 
       alert(addedText);
     }
