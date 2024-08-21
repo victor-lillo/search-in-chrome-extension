@@ -9,6 +9,7 @@
   export let searchId: string = '';
   const initialSearchId = searchId;
   export let searchUrl: string = '';
+  export let isEditing: boolean;
   let isInvalidInput: boolean = false;
 
   let savedSearchLinks: SearchLink[];
@@ -38,6 +39,7 @@
     await setStorage({
       [STORAGE_KEYS.searchLinks]: copy,
     });
+    isEditing = false;
   }
 </script>
 

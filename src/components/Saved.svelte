@@ -134,7 +134,7 @@
 
   {#if isEditing && editSearchLink}
     <h1>Edit</h1>
-    <EditSearchLink searchId={editSearchLink.id} searchUrl={editSearchLink.url} />
+    <EditSearchLink bind:isEditing={isEditing} searchId={editSearchLink.id} searchUrl={editSearchLink.url} />
   {/if}
 </form>
 
