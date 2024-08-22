@@ -6,8 +6,10 @@ async function initStorage() {
   await setStorage({ [STORAGE_KEYS.searchLinks]: DEFAULT.searchLinks })
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function onInstallCallback(details: chrome.runtime.InstalledDetails) {
-  console.log('Installed ✅', details.reason)
+  // Debug log
+  // console.log('Installed ✅', details.reason)
   initStorage()
 }
 
