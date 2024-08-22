@@ -23,12 +23,6 @@ const manifest = {
   background: {
     service_worker: 'src/background/index.ts',
   },
-  content_scripts: [
-    {
-      matches: ['<all_urls>'],
-      js: ['src/content/index.ts'],
-    },
-  ],
   options_ui: {
     page: 'src/options/options.html',
     open_in_tab: true,
