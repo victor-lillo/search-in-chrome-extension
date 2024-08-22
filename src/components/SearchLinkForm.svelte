@@ -1,11 +1,11 @@
 <script lang="ts">
   import Button from './Button.svelte';
 
-  export let searchUrl: string = '';
-  export let searchId: string = '';
-  export let isInvalidInput: boolean = false;
-  export let handleInput;
   export let handleAdd;
+  export let handleInput;
+  export let isInvalidInput: boolean = false;
+  export let searchId: string = '';
+  export let searchUrl: string = '';
 </script>
 
 <form on:submit|preventDefault={handleAdd}>
