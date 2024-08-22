@@ -10,7 +10,7 @@
 
 <section>
   <h1>Add new query</h1>
-  <AddSearchLink />
+  <AddSearchLink centerButtons={true} />
   <Button variant="outlined-white" handleClick={openOptionsPage}>Open options <Settings /></Button>
 </section>
 

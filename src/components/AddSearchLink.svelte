@@ -6,6 +6,7 @@
   import FormInstructions from './FormInstructions.svelte';
   import SearchLinkForm from './SearchLinkForm.svelte';
 
+  export let centerButtons: boolean = false;
   let isInvalidInput: boolean = false;
   let savedSearchLinks: SearchLink[];
   let searchId: string = '';
@@ -42,6 +43,7 @@
 <SearchLinkForm
   bind:searchId={searchId}
   bind:searchUrl={searchUrl}
+  centerButtons={centerButtons}
   handleAdd={handleAdd}
   handleInput={handleInput}
   isInvalidInput={isInvalidInput}
