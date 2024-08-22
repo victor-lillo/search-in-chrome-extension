@@ -7,12 +7,12 @@
   import Button from './Button.svelte';
   import EditSearchLink from './EditSearchLink.svelte';
 
-  let isEditing: boolean = false;
-  let filter: string = '';
-  let selectedIds: string[] = [];
-  let hoveredIndex: number | null = null;
   let editSearchLink: SearchLink | null = null;
+  let filter: string = '';
+  let hoveredIndex: number | null = null;
+  let isEditing: boolean = false;
   let savedSearchLinks: SearchLink[] = [];
+  let selectedIds: string[] = [];
 
   searchLinks.subscribe((value) => {
     savedSearchLinks = value;

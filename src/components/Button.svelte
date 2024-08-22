@@ -9,6 +9,7 @@
     | 'outlined-white'
     | 'primary'
     | 'secondary';
+
   export let ariaLabel: string | undefined = undefined;
   export let disabled = false;
   export let handleClick: MouseEventHandler<HTMLButtonElement> | undefined = undefined;

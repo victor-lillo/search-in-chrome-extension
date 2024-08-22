@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Saved from '../components/Saved.svelte';
   import AddSearchLink from '../components/AddSearchLink.svelte';
   import Presets from '../components/Presets.svelte';
+  import Saved from '../components/Saved.svelte';
 </script>
 
 <section>

@@ -7,13 +7,12 @@
   import Button from './Button.svelte';
   import SearchLinkForm from './SearchLinkForm.svelte';
 
-  export let searchId: string = '';
-  const initialSearchId = searchId;
-  export let searchUrl: string = '';
   export let isEditing: boolean;
+  export let searchId: string = '';
+  export let searchUrl: string = '';
   let isInvalidInput: boolean = false;
-
   let savedSearchLinks: SearchLink[];
+  const initialSearchId = searchId;
 
   searchLinks.subscribe((value) => {
     savedSearchLinks = value;
