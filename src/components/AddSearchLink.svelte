@@ -6,11 +6,10 @@
   import FormInstructions from './FormInstructions.svelte';
   import SearchLinkForm from './SearchLinkForm.svelte';
 
+  let isInvalidInput: boolean = false;
+  let savedSearchLinks: SearchLink[];
   let searchId: string = '';
   let searchUrl: string = '';
-  let isInvalidInput: boolean = false;
-
-  let savedSearchLinks: SearchLink[];
 
   searchLinks.subscribe((value) => {
     savedSearchLinks = value;
