@@ -1,7 +1,7 @@
 import { SEARCH_PLACEHOLDER } from '../constants'
 import type { SearchLink } from '../types'
 
-export type Preset = {
+export interface Preset {
   id: string
   label: string
   searchLinks: SearchLink[]

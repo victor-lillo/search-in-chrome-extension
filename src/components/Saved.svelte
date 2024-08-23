@@ -8,9 +8,9 @@
   import EditSearchLink from './EditSearchLink.svelte';
 
   let editSearchLink: SearchLink | null = null;
-  let filter: string = '';
+  let filter = '';
   let hoveredIndex: number | null = null;
-  let isEditing: boolean = false;
+  let isEditing = false;
   let savedSearchLinks: SearchLink[] = [];
   let selectedIds: string[] = [];
 

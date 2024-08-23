@@ -1,6 +1,6 @@
 <script lang="ts">
   // 🌐 SVG URL: https://www.svgrepo.com/svg/355487/search
-  export let size: string = '24';
+  export let size = '24';
 </script>
 
 <svg width={size} height={size} viewBox="0 0 100 100" stroke="#000000" stroke-width="0.001">
