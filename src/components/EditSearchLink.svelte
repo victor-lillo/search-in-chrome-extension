@@ -8,9 +8,9 @@
   import SearchLinkForm from './SearchLinkForm.svelte';
 
   export let isEditing: boolean;
-  export let searchId: string = '';
-  export let searchUrl: string = '';
-  let isInvalidInput: boolean = false;
+  export let searchId = '';
+  export let searchUrl = '';
+  let isInvalidInput = false;
   let savedSearchLinks: SearchLink[];
   const initialSearchId = searchId;
 

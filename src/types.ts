@@ -1,4 +1,4 @@
-export type SearchLink = {
+export interface SearchLink {
   id: string
   url: string
 }

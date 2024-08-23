@@ -6,11 +6,11 @@
   import FormInstructions from './FormInstructions.svelte';
   import SearchLinkForm from './SearchLinkForm.svelte';
 
-  export let centerButtons: boolean = false;
-  let isInvalidInput: boolean = false;
+  export let centerButtons = false;
+  let isInvalidInput = false;
   let savedSearchLinks: SearchLink[];
-  let searchId: string = '';
-  let searchUrl: string = '';
+  let searchId = '';
+  let searchUrl = '';
 
   searchLinks.subscribe((value) => {
     savedSearchLinks = value;

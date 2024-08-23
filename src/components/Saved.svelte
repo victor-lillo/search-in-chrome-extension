@@ -8,9 +8,9 @@
   import EditSearchLink from './EditSearchLink.svelte';
 
   let editSearchLink: SearchLink | null = null;
-  let filter: string = '';
+  let filter = '';
   let hoveredIndex: number | null = null;
-  let isEditing: boolean = false;
+  let isEditing = false;
   let savedSearchLinks: SearchLink[] = [];
   let selectedIds: string[] = [];
 
@@ -37,14 +37,16 @@
     // is the index of the item being dragged and
     // the index of the basket from which it is leaving.
     const data = { itemIndex };
-    event.dataTransfer!.effectAllowed = 'move';
+    if (event.dataTransfer) event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer?.setData('text/plain', JSON.stringify(data));
     currentTarget.style.opacity = '0.3';
   }
 
   async function handleDrop(event: DragEvent, finalItemIndex: number) {
     event.preventDefault();
-    const json = event.dataTransfer!.getData('text/plain');
+    if (!event.dataTransfer) return;
+
+    const json = event.dataTransfer.getData('text/plain');
     const data = JSON.parse(json);
     const movedItemIndex = data.itemIndex;
 
@@ -84,7 +86,8 @@
   }
 
   function handleEdit(selectedIds: string[]) {
-    editSearchLink = savedSearchLinks.find(({ id }) => selectedIds.includes(id))!;
+    const searchLinkToEdit = savedSearchLinks.find(({ id }) => selectedIds.includes(id));
+    if (searchLinkToEdit) editSearchLink = searchLinkToEdit;
 
     isEditing = true;
   }
