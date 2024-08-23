@@ -1,5 +1,6 @@
 <script lang="ts">
   import AddSearchLink from '../components/AddSearchLink.svelte';
+  import Header from '../components/Header.svelte';
   import Settings from '../components/icons/Settings.svelte';
 
   const openOptionsPage = () => {
@@ -7,6 +8,7 @@
   };
 </script>
 
+<Header />
 <section class="form-wrapper">
   <h1>Add new query</h1>
   <AddSearchLink centerButtons={true} />
