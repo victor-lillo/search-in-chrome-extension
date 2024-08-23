@@ -5,9 +5,10 @@ import type { SearchLink } from '../types'
 
 async function openInNewTab(info: chrome.contextMenus.OnClickData, tab?: chrome.tabs.Tab) {
   const searchLinks: SearchLink[] = await getStorage(STORAGE_KEYS.searchLinks)
-
-  const tabIndex = tab!.index
-  const selectionText = info.selectionText!
+  if (!tab) return
+  const tabIndex = tab.index
+  const selectionText = info.selectionText
+  if (!selectionText) return
   const menuItemId = info.menuItemId
   const selectedSearchUrl = searchLinks.find(({ id }) => id === menuItemId)?.url
   if (!selectedSearchUrl) return
