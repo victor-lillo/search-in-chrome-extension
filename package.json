@@ -10,8 +10,8 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json && tsc --noEmit",
     "oxlint": "npx --yes oxlint@latest",
-    "lint": "eslint --ext .js,.ts,.svelte .",
-    "lint:fix": "eslint --ext .js,.ts,.svelte . --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write ."
   },
