@@ -2,7 +2,8 @@ import { version } from './package.json'
 
 const manifest = {
   name: 'Search in...',
-  description: 'Chrome Extension Svelte Template: it does things.',
+  description:
+    "Search in... enhances your browsing experience by adding custom or prebuilt search queries directly to the browser's selection context menu",
   version: version,
   manifest_version: 3,
   icons: {
