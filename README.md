@@ -9,3 +9,13 @@ It includes by default some searches to popular sites, such Google or Reddit. Bu
 Currently, it comes with a **developer focused preset**, set with quick links to popular programming resources, such us StackOverflow or Github. If you want to add more, feel free to open an [issue](https://github.com/victor-lillo/search-in-chrome-extension/issues).
 
 Additionally, the extension allows you to **reorder the search options**. This feature makes it perfect for developers, researchers, or anyone who frequently searches across multiple platforms.
+
+### Screenshots 📷
+
+Popup window
+
+![Popup UI](./media/popup.png)
+
+Options page
+
+![Options UI](./media/options.png)
