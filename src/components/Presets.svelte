@@ -1,6 +1,6 @@
 <script lang="ts">
   import { searchLinks } from '../store';
-  import { PRESETS } from '../utils/presets';
+  import { PRESETS } from '../presets';
   import { setStorage } from '../utils/storage';
   import { STORAGE_KEYS } from '../constants';
   import type { SearchLink } from '../types';

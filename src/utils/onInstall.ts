@@ -1,4 +1,4 @@
-import { DEFAULT } from './presets'
+import { DEFAULT } from '../presets'
 import { setStorage } from './storage'
 import { STORAGE_KEYS } from '../constants'
 

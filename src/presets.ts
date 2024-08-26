@@ -1,5 +1,5 @@
-import { SEARCH_PLACEHOLDER } from '../constants'
-import type { SearchLink } from '../types'
+import { SEARCH_PLACEHOLDER } from './constants'
+import type { SearchLink } from './types'
 
 export interface Preset {
   id: string
