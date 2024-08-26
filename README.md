@@ -1,11 +1,3 @@
-# Chrome Extension Svelte Template
+# Search in... - Chrome Extension
 
-> With Vite, Typescript, Chrome Types, Autoprefixer & Prettier
-
-## 🤖 Scripts
-
-| Script  | Function                                                            |
-| :-----: | ------------------------------------------------------------------- |
-|  `dev`  | Bundles the code for developing with a dev server.                  |
-| `build` | Bundles the code for production.                                    |
-| `check` | CLI diagnostics checks for: CSS, A11y hints & JS/TS compiler error. |
+'Search in' is a Google Chrome extension that enhances your browsing experience by adding custom or prebuilt search queries directly to the browser's selection context menu.
