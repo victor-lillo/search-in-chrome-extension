@@ -31,7 +31,7 @@ export default async function onStorageChanged() {
         addContextMenu(newValue)
         // Open a new search tab when the user clicks a context menu
         chrome.contextMenus.onClicked.addListener(openInNewTab)
-        console.log(STORAGE_KEYS.searchLinks, 'changed')
+        // console.log(STORAGE_KEYS.searchLinks, 'changed')
       }
     }
   })
