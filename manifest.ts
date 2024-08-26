@@ -29,7 +29,6 @@ const manifest = {
     open_in_tab: true,
   },
   permissions: ['storage', 'contextMenus'],
-  host_permissions: ['<all_urls>'],
 }
 
 export default manifest
