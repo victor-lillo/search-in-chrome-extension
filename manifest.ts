@@ -3,7 +3,7 @@ import { version } from './package.json'
 const manifest = {
   name: 'Search in...',
   description:
-    "Enhances your browsing experience by adding custom or prebuilt search queries directly to the browser's selection context menu",
+    "Quickly search selected text on Google, Reddit, GitHub, or any custom site directly from browser's context menu.",
   version: version,
   manifest_version: 3,
   icons: {
