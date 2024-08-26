@@ -12,6 +12,10 @@ Additionally, the extension allows you to **reorder the search options**. This f
 
 ## Screenshots 📷
 
+### Context menu
+
+![Context menu](./media/context-menu.png)
+
 ### Popup window
 
 ![Popup UI](./media/popup.png)
