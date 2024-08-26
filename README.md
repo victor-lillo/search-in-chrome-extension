@@ -10,12 +10,12 @@ Currently, it comes with a **developer focused preset**, set with quick links to
 
 Additionally, the extension allows you to **reorder the search options**. This feature makes it perfect for developers, researchers, or anyone who frequently searches across multiple platforms.
 
-### Screenshots 📷
+## Screenshots 📷
 
-Popup window
+### Popup window
 
 ![Popup UI](./media/popup.png)
 
-Options page
+### Options page
 
 ![Options UI](./media/options.png)
