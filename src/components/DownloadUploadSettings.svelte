@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { searchLinks } from '../store';
   import { getStorage, setStorage } from '../utils/storage';
+  import { searchLinks } from '../store';
   import { STORAGE_KEYS } from '../constants';
   import { validateSearchLinks, type JSONError } from '../utils/validateSearchLinks';
   import type { SearchLink } from '../types';
-  import Upload from './icons/Upload.svelte';
-  import Download from './icons/Download.svelte';
   import Button from './Button.svelte';
+  import Download from './icons/Download.svelte';
+  import Upload from './icons/Upload.svelte';
 
   let savedSearchLinks: SearchLink[];
   let errorName: JSONError | null = null;
