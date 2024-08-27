@@ -1,6 +1,6 @@
 import type { SearchLink } from '../types'
 
-type JSONError = 'JSONSchemaError' | 'DuplicatedIdError'
+export type JSONError = 'JSONSchemaError' | 'DuplicatedIdError'
 
 export class JSONSchemaError extends Error {
   constructor(message?: string) {
