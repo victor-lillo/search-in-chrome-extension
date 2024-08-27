@@ -47,7 +47,7 @@
     align-items: center;
     justify-content: center;
     white-space: nowrap;
-    gap: 0.3rem;
+    gap: 0.7rem;
   }
 
   button:is(:hover):not(:disabled) {
