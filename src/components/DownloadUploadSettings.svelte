@@ -2,12 +2,14 @@
   import { searchLinks } from '../store';
   import { getStorage, setStorage } from '../utils/storage';
   import { STORAGE_KEYS } from '../constants';
+  import { validateSearchLinks, type JSONError } from '../utils/validateSearchLinks';
   import type { SearchLink } from '../types';
   import Upload from './icons/Upload.svelte';
   import Download from './icons/Download.svelte';
   import Button from './Button.svelte';
 
   let savedSearchLinks: SearchLink[];
+  let errorName: JSONError | null = null;
 
   searchLinks.subscribe((value) => {
     savedSearchLinks = value;
@@ -17,19 +19,27 @@
     const target = event.target as unknown as { files: File[] };
     const file: File = target?.files[0];
 
-    console.log(file);
-
     const reader = new FileReader();
-    reader.onload = (e) => {
+
+    reader.onload = async (e) => {
       if (e.target) {
-        const fileContent = e.target.result;
-        console.log(fileContent);
+        const fileContent = e.target.result as null | string;
+        if (!fileContent) return;
 
-        // searchLinks.set(searchLink);
+        const result = validateSearchLinks(fileContent);
 
-        // await setStorage({
-        //   [STORAGE_KEYS.searchLinks]: savedSearchLinks,
-        // });
+        if (typeof result === 'string') {
+          console.log('Invalid JSON', result);
+          errorName = result;
+          return;
+        } else if (typeof result === 'object') {
+          console.log('Valid JSON');
+
+          searchLinks.set(result);
+          await setStorage({
+            [STORAGE_KEYS.searchLinks]: result,
+          });
+        }
       }
     };
 
@@ -63,6 +73,12 @@
     <input on:change={handleUpload} type="file" accept=".json" />
     Upload settings <Upload size={24} />
   </label>
+  {#if errorName === 'DuplicatedIdError'}
+    <p>{errorName}: Invalid JSON schema in the uploaded file. Try again.</p>
+  {/if}
+  {#if errorName === 'JSONSchemaError'}
+    <p>{errorName}: Duplicated ids in the uploaded file. Try again.</p>
+  {/if}
 </div>
 
 <style>
