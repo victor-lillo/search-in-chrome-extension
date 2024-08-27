@@ -1,9 +1,40 @@
 <script lang="ts">
-  import { getStorage } from '../utils/storage';
+  import { searchLinks } from '../store';
+  import { getStorage, setStorage } from '../utils/storage';
   import { STORAGE_KEYS } from '../constants';
-
+  import type { SearchLink } from '../types';
   import Upload from './icons/Upload.svelte';
   import Download from './icons/Download.svelte';
+  import Button from './Button.svelte';
+
+  let savedSearchLinks: SearchLink[];
+
+  searchLinks.subscribe((value) => {
+    savedSearchLinks = value;
+  });
+
+  async function handleUpload(event: Event) {
+    const target = event.target as unknown as { files: File[] };
+    const file: File = target?.files[0];
+
+    console.log(file);
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (e.target) {
+        const fileContent = e.target.result;
+        console.log(fileContent);
+
+        // searchLinks.set(searchLink);
+
+        // await setStorage({
+        //   [STORAGE_KEYS.searchLinks]: savedSearchLinks,
+        // });
+      }
+    };
+
+    reader.readAsText(file);
+  }
 
   async function handleDownload() {
     const settingsJson = await getStorage(STORAGE_KEYS.searchLinks);
@@ -25,8 +56,13 @@
 </script>
 
 <div>
-  <button on:click={handleDownload} type="button"> Download settings <Download /> </button>
-  <button type="button"> Upload settings <Upload /> </button>
+  <Button variant="outlined-white" handleClick={handleDownload} type="button">
+    Download settings <Download size={24} />
+  </Button>
+  <label>
+    <input on:change={handleUpload} type="file" accept=".json" />
+    Upload settings <Upload size={24} />
+  </label>
 </div>
 
 <style>
@@ -35,9 +71,19 @@
     gap: 1rem;
   }
 
-  button {
+  input {
+    display: none;
+  }
+
+  label {
     display: flex;
-    gap: 0.6rem;
+    font-size: 1rem;
+    font-weight: 500;
+    gap: 0.7rem;
+    padding: 0.5rem 1.4rem;
     align-items: center;
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: var(--border-radius-1);
   }
 </style>
