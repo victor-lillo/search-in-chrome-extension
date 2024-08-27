@@ -20,7 +20,6 @@ function toJSON(str: string) {
   try {
     return JSON.parse(str)
   } catch {
-    console.log('En toJSON')
     throw new JSONSchemaError()
   }
 }
@@ -33,7 +32,7 @@ export function validateSearchLinks(settings: string) {
     if (uniqueIds.size < parsed.length) {
       throw new DuplicatedIdError()
     }
-    console.log('Superamos el duplicates')
+
     return parsed
   } catch (error) {
     if (error instanceof Error) {
