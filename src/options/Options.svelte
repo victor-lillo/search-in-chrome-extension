@@ -1,5 +1,6 @@
 <script lang="ts">
   import AddSearchLink from '../components/AddSearchLink.svelte';
+  import DownloadUploadSettings from '../components/DownloadUploadSettings.svelte';
   import Presets from '../components/Presets.svelte';
   import Saved from '../components/Saved.svelte';
 </script>
@@ -13,6 +14,9 @@
 </section>
 <section>
   <Presets />
+</section>
+<section>
+  <DownloadUploadSettings />
 </section>
 
 <style>
