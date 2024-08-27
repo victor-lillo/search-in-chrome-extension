@@ -1,5 +1,7 @@
 import type { SearchLink } from '../types'
 
+type JSONError = 'JSONSchemaError' | 'DuplicatedIdError'
+
 export class JSONSchemaError extends Error {
   constructor(message?: string) {
     super(message)
@@ -35,7 +37,7 @@ export function validateSearchLinks(settings: string) {
     return parsed
   } catch (error) {
     if (error instanceof Error) {
-      return error.name
+      return error.name as JSONError
     }
   }
 }
