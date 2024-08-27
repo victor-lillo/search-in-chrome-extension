@@ -3,17 +3,11 @@
   import { searchLinks } from '../store';
   import { STORAGE_KEYS } from '../constants';
   import { validateSearchLinks, type JSONError } from '../utils/validateSearchLinks';
-  import type { SearchLink } from '../types';
   import Button from './Button.svelte';
   import Download from './icons/Download.svelte';
   import Upload from './icons/Upload.svelte';
 
-  let savedSearchLinks: SearchLink[];
   let errorName: JSONError | null = null;
-
-  searchLinks.subscribe((value) => {
-    savedSearchLinks = value;
-  });
 
   async function handleUpload(event: Event) {
     const target = event.target as unknown as { files: File[] };
