@@ -68,11 +68,15 @@
     <input on:change={handleUpload} type="file" accept=".json" />
     Upload settings <Upload size={24} />
   </label>
-  {#if errorName === 'DuplicatedIdError'}
-    <p>{errorName}: Invalid JSON schema in the uploaded file. Try again.</p>
-  {/if}
-  {#if errorName === 'JSONSchemaError'}
-    <p>{errorName}: Duplicated ids in the uploaded file. Try again.</p>
+  {#if errorName}
+    <p class="error">
+      {#if errorName === 'DuplicatedIdError'}
+        {errorName}: Invalid JSON schema in the uploaded file. Try again.
+      {/if}
+      {#if errorName === 'JSONSchemaError'}
+        {errorName}: Duplicated ids in the uploaded file. Try again.
+      {/if}
+    </p>
   {/if}
 </div>
 
@@ -96,5 +100,9 @@
     border: 2px solid white;
     background-color: transparent;
     border-radius: var(--border-radius-1);
+  }
+
+  .error {
+    color: red;
   }
 </style>
