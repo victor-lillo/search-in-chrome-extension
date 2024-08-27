@@ -28,6 +28,7 @@
           return;
         } else if (typeof result === 'object') {
           console.log('Valid JSON');
+          errorName = null;
 
           searchLinks.set(result);
           await setStorage({
