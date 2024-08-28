@@ -61,6 +61,7 @@
   }
 </script>
 
+<h1>Download or upload saved settings</h1>
 <div>
   <Button variant="outlined-white" handleClick={handleDownload} type="button">
     Download settings <Download size={24} />
