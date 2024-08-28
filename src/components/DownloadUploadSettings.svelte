@@ -24,11 +24,9 @@
         const result = validateSearchLinks(fileContent);
 
         if (typeof result === 'string') {
-          console.log('Invalid JSON', result);
           errorName = result;
           return;
         } else if (typeof result === 'object') {
-          console.log('Valid JSON');
           errorName = null;
           searchLinks.set(result);
           await setStorage({
