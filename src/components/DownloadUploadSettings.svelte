@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { alertAllItemsAdded } from '../utils/alerts';
   import { getStorage, setStorage } from '../utils/storage';
   import { searchLinks } from '../store';
   import { STORAGE_KEYS } from '../constants';
@@ -29,11 +30,11 @@
         } else if (typeof result === 'object') {
           console.log('Valid JSON');
           errorName = null;
-
           searchLinks.set(result);
           await setStorage({
             [STORAGE_KEYS.searchLinks]: result,
           });
+          alertAllItemsAdded(result);
         }
       }
     };
