@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { searchLinks } from '../store';
-  import { setStorage } from '../utils/storage';
-  import { STORAGE_KEYS } from '../constants';
-  import type { SearchLink } from '../types';
+  import { searchLinks } from '@/store';
+  import { setStorage } from '@/utils/storage';
+  import { STORAGE_KEYS } from '@/constants';
+  import type { SearchLink } from '@/types';
 
-  import Button from './Button.svelte';
-  import SearchLinkForm from './SearchLinkForm.svelte';
+  import Button from '@/components/Button.svelte';
+  import SearchLinkForm from '@/components/SearchLinkForm.svelte';
 
   export let isEditing: boolean;
   export let searchId = '';

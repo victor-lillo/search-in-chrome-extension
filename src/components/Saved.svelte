@@ -1,11 +1,11 @@
 <script lang="ts">
   import { flip } from 'svelte/animate';
-  import { searchLinks } from '../store';
-  import { setStorage } from '../utils/storage';
-  import { STORAGE_KEYS } from '../constants';
-  import type { SearchLink } from '../types';
-  import Button from './Button.svelte';
-  import EditSearchLink from './EditSearchLink.svelte';
+  import { searchLinks } from '@/store';
+  import { setStorage } from '@/utils/storage';
+  import { STORAGE_KEYS } from '@/constants';
+  import type { SearchLink } from '@/types';
+  import Button from '@/components/Button.svelte';
+  import EditSearchLink from '@/components/EditSearchLink.svelte';
 
   let editSearchLink: SearchLink | null = null;
   let filter = '';

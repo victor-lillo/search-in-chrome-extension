@@ -2,12 +2,15 @@
 
 changelog:
   categories:
-    - title: 🏕 Features
+    - title: ⚛️ Chore
       labels:
-        - '*'
-      exclude:
-        labels:
-          - dependencies
+        - chore
     - title: 👒 Dependencies
       labels:
         - dependencies
+    - title: 🏕 Features
+      labels:
+        - enhancement
+    - title: Other Changes
+      labels:
+        - '*'

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import AddSearchLink from '../components/AddSearchLink.svelte';
-  import Header from '../components/Header.svelte';
-  import Settings from '../components/icons/Settings.svelte';
+  import AddSearchLink from '@/components/AddSearchLink.svelte';
+  import Header from '@/components/Header.svelte';
+  import Settings from '@/components/icons/Settings.svelte';
 
   const openOptionsPage = () => {
     chrome.runtime.openOptionsPage();

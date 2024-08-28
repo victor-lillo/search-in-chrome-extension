@@ -1,4 +1,4 @@
-import type { SearchLink } from '../types'
+import type { SearchLink } from '@/types'
 
 export type JSONError = 'JSONSchemaError' | 'DuplicatedIdError' | 'ObjectKeysError'
 
