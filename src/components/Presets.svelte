@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { searchLinks } from '../store';
+  import { alertAllItemsAdded, alertNoItemsAdded, alertSomeItemsAdded } from '../utils/alerts';
   import { PRESETS } from '../presets';
+  import { searchLinks } from '../store';
   import { setStorage } from '../utils/storage';
   import { STORAGE_KEYS } from '../constants';
   import type { SearchLink } from '../types';
@@ -29,34 +30,15 @@
 
     // All have already been added
     if (newAddedSearchLinks.length === 0) {
-      const formatter = new Intl.ListFormat('en', {
-        style: 'long',
-        type: 'conjunction',
-      });
-      const addedText = `❌ ${formatter.format(addedSearchLinks.map(({ id }) => id))} were already saved, there is nothing to add.`;
-
-      alert(addedText);
-      return;
+      alertNoItemsAdded(addedSearchLinks);
     }
     // Some have already been added
     else if (alreadyAddedSearchLinks.length > 0) {
-      const formatter = new Intl.ListFormat('en', {
-        style: 'long',
-        type: 'conjunction',
-      });
-      const addedText = `✅ ${formatter.format(newAddedSearchLinks.map(({ id }) => id))} added successfully.\n❌ ${formatter.format(alreadyAddedSearchLinks.map(({ id }) => id))} were already added.`;
-
-      alert(addedText);
+      alertSomeItemsAdded(newAddedSearchLinks, alreadyAddedSearchLinks);
     }
     // All additions are new
     else {
-      const formatter = new Intl.ListFormat('en', {
-        style: 'long',
-        type: 'conjunction',
-      });
-      const addedText = `✅ ${formatter.format(newAddedSearchLinks.map(({ id }) => id))} added successfully.\n`;
-
-      alert(addedText);
+      alertAllItemsAdded(newAddedSearchLinks);
     }
   }
 </script>
