@@ -1,6 +1,6 @@
 import type { SearchLink } from '../types'
 
-export type JSONError = 'JSONSchemaError' | 'DuplicatedIdError'
+export type JSONError = 'JSONSchemaError' | 'DuplicatedIdError' | 'ObjectKeysError'
 
 export class JSONSchemaError extends Error {
   constructor(message?: string) {
@@ -16,6 +16,13 @@ export class DuplicatedIdError extends Error {
   }
 }
 
+export class ObjectKeysError extends Error {
+  constructor(message?: string) {
+    super(message)
+    this.name = 'ObjectKeysError'
+  }
+}
+
 function toJSON(str: string) {
   try {
     return JSON.parse(str)
@@ -27,6 +34,11 @@ function toJSON(str: string) {
 export function validateSearchLinks(settings: string) {
   try {
     const parsed = toJSON(settings) as SearchLink[]
+
+    const matchsSearchLinkType = parsed.every((el) => Object.keys(el).length === 2 && el.id && el.url)
+    if (!matchsSearchLinkType) {
+      throw new ObjectKeysError()
+    }
 
     const uniqueIds = new Set(parsed.map((v) => v.id))
     if (uniqueIds.size < parsed.length) {
