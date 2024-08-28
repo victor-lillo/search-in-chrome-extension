@@ -94,7 +94,7 @@
   }
 
   .outlined-white:hover {
-    --background-color: rgba(243, 243, 243, 0.08);
+    --background-color: #f3f3f314;
   }
 
   .outlined-red {
@@ -103,6 +103,6 @@
   }
 
   .outlined-red:hover {
-    --background-color: rgba(244, 67, 54, 0.08);
+    --background-color: #f4433614;
   }
 </style>
