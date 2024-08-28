@@ -2,18 +2,18 @@
 
 changelog:
   categories:
-    - title: ⚛️ Chore
-      labels:
-        - chore
-    - title: 👒 Dependencies
-      labels:
-        - dependencies
     - title: 🏕 Features
       labels:
         - enhancement
     - title: 🚧 Fix
       labels:
         - bug fix
+    - title: ⚛️ Chore
+      labels:
+        - chore
+    - title: 👒 Dependencies
+      labels:
+        - dependencies
     - title: Other Changes
       labels:
         - '*'
