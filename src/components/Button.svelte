@@ -83,8 +83,6 @@
   .outlined-green {
     --background-color: transparent;
     --border-color: var(--color-green);
-
-    color: var(--color-green);
   }
 
   .outlined-green:hover {
@@ -94,8 +92,6 @@
   .outlined-white {
     --background-color: transparent;
     --border-color: var(--color-light-1);
-
-    color: var(--color-light-1);
   }
 
   .outlined-white:hover {
@@ -105,8 +101,6 @@
   .outlined-red {
     --background-color: transparent;
     --border-color: var(--color-red);
-
-    color: var(--color-red);
   }
 
   .outlined-red:hover {
