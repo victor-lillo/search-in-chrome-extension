@@ -63,7 +63,7 @@
 
 <h1>Download or upload saved settings</h1>
 <div>
-  <Button variant="outlined-white" handleClick={handleDownload} type="button">
+  <Button variant="outlined-green" handleClick={handleDownload} type="button">
     Download settings <Download size={24} />
   </Button>
   <label>
@@ -100,9 +100,15 @@
     gap: 0.7rem;
     padding: 0.5rem 1.4rem;
     align-items: center;
-    border: 2px solid white;
+    border: 2px solid var(--color-green);
     background-color: transparent;
     border-radius: var(--border-radius-1);
+  }
+
+  @media (hover: hover) {
+    label:hover {
+      background-color: #009e2048;
+    }
   }
 
   .error {
