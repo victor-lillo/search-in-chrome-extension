@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { alertAllItemsAdded } from '../utils/alerts';
-  import { getStorage, setStorage } from '../utils/storage';
-  import { searchLinks } from '../store';
-  import { STORAGE_KEYS } from '../constants';
-  import { validateSearchLinks, type JSONError } from '../utils/validateSearchLinks';
-  import Button from './Button.svelte';
-  import Download from './icons/Download.svelte';
-  import Upload from './icons/Upload.svelte';
+  import { alertAllItemsAdded } from '@/utils/alerts';
+  import { getStorage, setStorage } from '@/utils/storage';
+  import { searchLinks } from '@/store';
+  import { STORAGE_KEYS } from '@/constants';
+  import { validateSearchLinks, type JSONError } from '@/utils/validateSearchLinks';
+  import Button from '@/components/Button.svelte';
+  import Download from '@/components/icons/Download.svelte';
+  import Upload from '@/components/icons/Upload.svelte';
 
   let errorName: JSONError | null = null;
 

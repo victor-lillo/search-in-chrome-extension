@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { alertAllItemsAdded, alertNoItemsAdded, alertSomeItemsAdded } from '../utils/alerts';
-  import { PRESETS } from '../presets';
-  import { searchLinks } from '../store';
-  import { setStorage } from '../utils/storage';
-  import { STORAGE_KEYS } from '../constants';
-  import type { SearchLink } from '../types';
-  import Button from './Button.svelte';
+  import { alertAllItemsAdded, alertNoItemsAdded, alertSomeItemsAdded } from '@/utils/alerts';
+  import { PRESETS } from '@/presets';
+  import { searchLinks } from '@/store';
+  import { setStorage } from '@/utils/storage';
+  import { STORAGE_KEYS } from '@/constants';
+  import type { SearchLink } from '@/types';
+  import Button from '@/components/Button.svelte';
 
   let alreadyAddedSearchLinks: SearchLink[] = [];
   let newAddedSearchLinks: SearchLink[] = [];

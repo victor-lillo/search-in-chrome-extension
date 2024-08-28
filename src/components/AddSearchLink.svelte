@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { searchLinks } from '../store';
-  import { setStorage } from '../utils/storage';
-  import { STORAGE_KEYS } from '../constants';
-  import type { SearchLink } from '../types';
-  import FormInstructions from './FormInstructions.svelte';
-  import SearchLinkForm from './SearchLinkForm.svelte';
+  import { searchLinks } from '@//store';
+  import { setStorage } from '@//utils/storage';
+  import { STORAGE_KEYS } from '@//constants';
+  import type { SearchLink } from '@//types';
+  import FormInstructions from '@/components/FormInstructions.svelte';
+  import SearchLinkForm from '@/components/SearchLinkForm.svelte';
 
   export let centerButtons = false;
   let isInvalidInput = false;

@@ -1,6 +1,6 @@
-import { DEFAULT } from '../presets'
-import { setStorage } from './storage'
-import { STORAGE_KEYS } from '../constants'
+import { DEFAULT } from '@/presets'
+import { setStorage } from '@/utils/storage'
+import { STORAGE_KEYS } from '@/constants'
 
 async function initStorage() {
   await setStorage({ [STORAGE_KEYS.searchLinks]: DEFAULT.searchLinks })

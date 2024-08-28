@@ -1,4 +1,4 @@
-import type { SearchLink } from '../types'
+import type { SearchLink } from '@/types'
 
 const formatter = new Intl.ListFormat('en', {
   style: 'long',

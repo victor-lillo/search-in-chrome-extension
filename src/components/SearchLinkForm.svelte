@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from './Button.svelte';
+  import Button from '@/components/Button.svelte';
 
   export let centerButtons = false;
   export let handleAdd;

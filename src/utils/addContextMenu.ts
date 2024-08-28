@@ -1,4 +1,4 @@
-import { type SearchLink } from '../types'
+import { type SearchLink } from '@/types'
 
 export function addContextMenu(searchLinks: SearchLink[]) {
   for (const { id } of searchLinks) {

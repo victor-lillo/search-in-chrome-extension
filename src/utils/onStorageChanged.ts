@@ -1,7 +1,7 @@
-import { addContextMenu, clearContextMenu } from './addContextMenu'
-import { getStorage } from './storage'
-import { SEARCH_PLACEHOLDER, STORAGE_KEYS } from '../constants'
-import type { SearchLink } from '../types'
+import { addContextMenu, clearContextMenu } from '@/utils/addContextMenu'
+import { getStorage } from '@/utils/storage'
+import { SEARCH_PLACEHOLDER, STORAGE_KEYS } from '@/constants'
+import type { SearchLink } from '@/types'
 
 async function openInNewTab(info: chrome.contextMenus.OnClickData, tab?: chrome.tabs.Tab) {
   const searchLinks: SearchLink[] = await getStorage(STORAGE_KEYS.searchLinks)
