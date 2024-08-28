@@ -26,8 +26,7 @@
   disabled={disabled}
   type={type}
 >
-  <!-- eslint-disable-next-line svelte/html-self-closing -->
-  <slot />
+  <slot></slot>
 </button>
 
 <style>
