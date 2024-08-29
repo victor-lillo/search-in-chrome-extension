@@ -1,9 +1,9 @@
 import { addContextMenu, clearContextMenu, openInNewTab } from '@/utils/contextMenu'
 import { DEFAULT } from '@/presets'
-import { setStorage } from '@/utils/storage'
+import { getStorage, setStorage } from '@/utils/storage'
 import { STORAGE_KEYS } from '@/constants'
 
-// https://github.com/GoogleChrome/chrome-extensions-samples/blob/main/api-samples/contextMenus/global_context_search/background.js
+console.log('Background script init')
 
 async function setInitialStorage() {
   console.log('Set initial storage')
@@ -21,10 +21,16 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
   }
 })
 
+// context menu items only need to be created at runtime.onInstalled
+// https://github.com/GoogleChrome/chrome-extensions-samples/blob/main/api-samples/contextMenus/global_context_search/background.js
 chrome.runtime.onInstalled.addListener(async (details) => {
   if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     console.log('✅ Installed', details.reason)
     await setInitialStorage()
+  } else {
+    console.log('✅ onInstalled reason:', details.reason)
+    const saved = await getStorage(STORAGE_KEYS.searchLinks)
+    addContextMenu(saved)
   }
 })
 
