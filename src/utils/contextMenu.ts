@@ -2,16 +2,13 @@ import type { SearchLink } from '@/types'
 import { getStorage } from '@/utils/storage'
 import { SEARCH_PLACEHOLDER, STORAGE_KEYS } from '@/constants'
 
-export function addContextMenu(searchLinks: SearchLink[]) {
-  console.log('Add contexts menu', searchLinks)
-  for (const { id } of searchLinks) {
-    chrome.contextMenus.create({
-      id: id,
-      title: id,
-      type: 'normal',
-      contexts: ['selection'],
-    })
-  }
+export function addContextMenu(id: string) {
+  chrome.contextMenus.create({
+    id: id,
+    title: id,
+    type: 'normal',
+    contexts: ['selection'],
+  })
 }
 
 export function clearContextMenu() {
