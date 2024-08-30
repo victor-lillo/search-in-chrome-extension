@@ -1,6 +1,6 @@
 {
   "name": "search-in-chrome-extension",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module",
   "description": "'Search in' is a Google Chrome extension that enhances your browsing experience by adding custom or prebuilt search queries directly to the browser's selection context menu.",
   "scripts": {
