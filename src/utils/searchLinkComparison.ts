@@ -13,6 +13,5 @@ export function removed(old: SearchLink[], current: SearchLink[]) {
 }
 
 export function hasSameOrder(a: SearchLink[], b: SearchLink[]) {
-  if (a.length !== b.length) return false
   return a.every((el, index) => el.id === b[index].id)
 }
