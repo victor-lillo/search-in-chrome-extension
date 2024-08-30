@@ -1,8 +1,8 @@
-import { addContextMenu, openInNewTab } from '@/utils/contextMenu'
+import { addContextMenu, clearContextMenu, openInNewTab } from '@/utils/contextMenu'
+import { added, hasSameOrder, removed } from '@/utils/searchLinkComparison'
 import { DEFAULT } from '@/presets'
 import { getStorage, setStorage } from '@/utils/storage'
 import { STORAGE_KEYS } from '@/constants'
-import { added, removed } from '@/utils/searchLinkComparison'
 import type { SearchLink } from '@/types'
 
 console.log('Background script init')
@@ -20,10 +20,15 @@ chrome.storage.onChanged.addListener((changes) => {
 
       console.log('Storage changed:', STORAGE_KEYS.searchLinks)
 
+      // If reorder, redo contextMenu
+      if (oldValue.length === newValue.length && !hasSameOrder(oldValue, newValue)) {
+        clearContextMenu()
+        newValue.forEach(({ id }) => addContextMenu(id))
+        return
+      }
+
       const addedSearchLinks = added(oldValue, newValue)
       const removedSearchLinks = removed(oldValue, newValue)
-      console.log({ addedSearchLinks })
-      console.log({ removedSearchLinks })
 
       addedSearchLinks.forEach(({ id }) => addContextMenu(id))
       removedSearchLinks.forEach(({ id }) => chrome.contextMenus.remove(id))
