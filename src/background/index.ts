@@ -2,8 +2,8 @@ import { addContextMenu, openInNewTab } from '@/utils/contextMenu'
 import { DEFAULT } from '@/presets'
 import { getStorage, setStorage } from '@/utils/storage'
 import { STORAGE_KEYS } from '@/constants'
-import { added, removed } from '../utils/searchLinkComparison'
-import type { SearchLink } from '../types'
+import { added, removed } from '@/utils/searchLinkComparison'
+import type { SearchLink } from '@/types'
 
 console.log('Background script init')
 
