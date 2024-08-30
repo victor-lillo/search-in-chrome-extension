@@ -11,3 +11,7 @@ export function alreadyAdded(old: SearchLink[], current: SearchLink[]) {
 export function removed(old: SearchLink[], current: SearchLink[]) {
   return old.filter((el) => !current.some((element) => element.id === el.id))
 }
+
+export function hasSameOrder(a: SearchLink[], b: SearchLink[]) {
+  return a.every((el, index) => el.id === b[index].id)
+}
