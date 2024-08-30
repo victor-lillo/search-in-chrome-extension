@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { added, alreadyAdded } from '@/utils/searchLinkComparison';
   import { alertAllItemsAdded, alertNoItemsAdded, alertSomeItemsAdded } from '@/utils/alerts';
   import { PRESETS } from '@/presets';
   import { searchLinks } from '@/store';
@@ -18,8 +19,8 @@
   async function handleAdd(e: MouseEvent, addedSearchLinks: SearchLink[]) {
     e.preventDefault();
 
-    alreadyAddedSearchLinks = savedSearchLinks.filter((el) => addedSearchLinks.some((element) => element.id === el.id));
-    newAddedSearchLinks = addedSearchLinks.filter((el) => !savedSearchLinks.some((element) => element.id === el.id));
+    alreadyAddedSearchLinks = alreadyAdded(savedSearchLinks, addedSearchLinks);
+    newAddedSearchLinks = added(savedSearchLinks, addedSearchLinks);
 
     const nonDuplicated = [...savedSearchLinks, ...newAddedSearchLinks];
     searchLinks.set(nonDuplicated);
