@@ -1,7 +1,9 @@
-import { addContextMenu, clearContextMenu, openInNewTab } from '@/utils/contextMenu'
+import { addContextMenu, openInNewTab } from '@/utils/contextMenu'
 import { DEFAULT } from '@/presets'
 import { getStorage, setStorage } from '@/utils/storage'
 import { STORAGE_KEYS } from '@/constants'
+import { added, removed } from '../utils/searchLinkComparation'
+import type { SearchLink } from '../types'
 
 console.log('Background script init')
 
@@ -10,13 +12,21 @@ async function setInitialStorage() {
   await setStorage({ [STORAGE_KEYS.searchLinks]: DEFAULT.searchLinks })
 }
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
-chrome.storage.onChanged.addListener((changes, namespace) => {
-  for (const [key, { oldValue, newValue }] of Object.entries(changes)) {
+chrome.storage.onChanged.addListener((changes) => {
+  for (const [key, value] of Object.entries(changes)) {
     if (key === STORAGE_KEYS.searchLinks) {
+      const oldValue: SearchLink[] = value.oldValue ?? []
+      const newValue: SearchLink[] = value.newValue
+
       console.log('Storage changed:', STORAGE_KEYS.searchLinks)
-      clearContextMenu()
-      addContextMenu(newValue)
+
+      const addedSearchLinks = added(oldValue, newValue)
+      const removedSearchLinks = removed(oldValue, newValue)
+      console.log({ addedSearchLinks })
+      console.log({ removedSearchLinks })
+
+      addedSearchLinks.forEach(({ id }) => addContextMenu(id))
+      removedSearchLinks.forEach(({ id }) => chrome.contextMenus.remove(id))
     }
   }
 })
