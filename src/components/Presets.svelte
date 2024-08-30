@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { added, alreadyAdded } from '@/utils/searchLinkComparation';
+  import { added, alreadyAdded } from '@/utils/searchLinkComparison';
   import { alertAllItemsAdded, alertNoItemsAdded, alertSomeItemsAdded } from '@/utils/alerts';
   import { PRESETS } from '@/presets';
   import { searchLinks } from '@/store';
