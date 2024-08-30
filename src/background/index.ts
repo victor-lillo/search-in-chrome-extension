@@ -29,8 +29,10 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     await setInitialStorage()
   } else {
     console.log('✅ onInstalled reason:', details.reason)
-    const saved = await getStorage(STORAGE_KEYS.searchLinks)
-    addContextMenu(saved)
+
+    const saved: SearchLink[] = await getStorage(STORAGE_KEYS.searchLinks)
+
+    saved.forEach(({ id }) => addContextMenu(id))
   }
 })
 
