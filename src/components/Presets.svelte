@@ -47,8 +47,8 @@
 <h1>Presets</h1>
 <section>
   {#each PRESETS as { label, searchLinks: presetSearchLinks }}
-    <h3 class="title">{label}</h3>
     <form on:submit={(e) => handleAdd(e, presetSearchLinks)}>
+      <h3 class="title">{label}</h3>
       <ul class="list">
         {#each presetSearchLinks as { id, url }}
           <li class="row">
