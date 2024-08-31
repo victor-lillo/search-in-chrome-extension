@@ -58,10 +58,6 @@
     </ul>
     <Button variant="primary" type="submit" handleClick={(e) => handleAdd(e, presetSearchLinks)}>Add</Button>
   {/each}
-
-  {#if alreadyAddedSearchLinks.length > 0}
-    <p><strong></strong> is already in use. Choose a different one.</p>
-  {/if}
 </form>
 
 <style>
