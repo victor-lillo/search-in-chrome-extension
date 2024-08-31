@@ -16,7 +16,7 @@
     savedSearchLinks = value;
   });
 
-  async function handleAdd(e: MouseEvent, addedSearchLinks: SearchLink[]) {
+  async function handleAdd(e: SubmitEvent, addedSearchLinks: SearchLink[]) {
     e.preventDefault();
 
     alreadyAddedSearchLinks = alreadyAdded(savedSearchLinks, addedSearchLinks);
@@ -45,23 +45,25 @@
 </script>
 
 <h1>Presets</h1>
-<form>
+<section>
   {#each PRESETS as { label, searchLinks: presetSearchLinks }}
     <h3 class="title">{label}</h3>
-    <ul class="list">
-      {#each presetSearchLinks as { id, url }}
-        <li class="row">
-          {id}
-          <code>{url}</code>
-        </li>
-      {/each}
-    </ul>
-    <Button variant="primary" type="submit" handleClick={(e) => handleAdd(e, presetSearchLinks)}>Add</Button>
+    <form on:submit={(e) => handleAdd(e, presetSearchLinks)}>
+      <ul class="list">
+        {#each presetSearchLinks as { id, url }}
+          <li class="row">
+            {id}
+            <code>{url}</code>
+          </li>
+        {/each}
+      </ul>
+      <Button variant="primary" type="submit">Add</Button>
+    </form>
   {/each}
-</form>
+</section>
 
 <style>
-  form {
+  section {
     display: flex;
     flex-direction: column;
     gap: 1rem;
