@@ -86,7 +86,7 @@
     flex-direction: column;
     gap: 0.5rem;
     border-radius: var(--border-radius-1);
-    background-color: var(--color-dark-1);
+    background-color: var(--color-dark-2);
     padding: 0.8rem 0.6rem;
   }
 

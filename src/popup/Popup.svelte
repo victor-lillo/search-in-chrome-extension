@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: center;
     padding-block: 0.6rem;
-    background-color: var(--color-dark-3);
+    background-color: var(--color-dark-4);
     transition: background-color 0.3s ease;
   }
 

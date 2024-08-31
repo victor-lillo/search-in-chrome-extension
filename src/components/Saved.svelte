@@ -174,7 +174,7 @@
     align-items: center;
     gap: 0.5rem;
     cursor: move;
-    border: 2px solid var(--color-dark-4);
+    border: 2px solid var(--color-dark-5);
     border-radius: var(--border-radius-1);
     padding: 0.5rem 1rem;
   }

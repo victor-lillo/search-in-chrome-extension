@@ -12,12 +12,12 @@
 <style>
   details {
     border-radius: var(--border-radius-1);
-    border: 2px solid var(--color-dark-3);
+    border: 2px solid var(--color-dark-4);
     list-style-type: '▶️';
   }
 
   summary {
-    background-color: var(--color-dark-3);
+    background-color: var(--color-dark-4);
     padding: 0.5rem;
     font-size: 1.1rem;
     cursor: pointer;
