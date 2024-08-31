@@ -45,9 +45,9 @@
 </script>
 
 <h1>Presets</h1>
-<section>
+<section class="grid">
   {#each PRESETS as { label, searchLinks: presetSearchLinks }}
-    <form on:submit={(e) => handleAdd(e, presetSearchLinks)}>
+    <form class="preset-container" on:submit={(e) => handleAdd(e, presetSearchLinks)}>
       <h3 class="title">{label}</h3>
       <ul class="list">
         {#each presetSearchLinks as { id, url }}
@@ -57,16 +57,24 @@
           </li>
         {/each}
       </ul>
-      <Button variant="primary" type="submit">Add</Button>
+      <Button variant="primary" type="submit">Add preset</Button>
     </form>
   {/each}
 </section>
 
 <style>
-  section {
+  .grid,
+  .preset-container {
     display: flex;
     flex-direction: column;
+  }
+
+  .grid {
     gap: 1rem;
+  }
+
+  .preset-container {
+    gap: 0.5rem;
   }
 
   .title {
@@ -77,6 +85,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    border-radius: var(--border-radius-1);
+    background-color: var(--color-dark-1);
+    padding: 0.8rem 0.6rem;
   }
 
   .row {
@@ -85,7 +96,6 @@
     gap: 0.5rem;
     font-size: 1rem;
     white-space: nowrap;
-    cursor: inherit;
     contain: paint;
   }
 </style>
