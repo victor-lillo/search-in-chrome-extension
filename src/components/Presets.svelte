@@ -16,7 +16,7 @@
     savedSearchLinks = value;
   });
 
-  async function handleAdd(e: MouseEvent, addedSearchLinks: SearchLink[]) {
+  async function handleAdd(e: SubmitEvent, addedSearchLinks: SearchLink[]) {
     e.preventDefault();
 
     alreadyAddedSearchLinks = alreadyAdded(savedSearchLinks, addedSearchLinks);
@@ -45,30 +45,36 @@
 </script>
 
 <h1>Presets</h1>
-<form>
+<section class="grid">
   {#each PRESETS as { label, searchLinks: presetSearchLinks }}
-    <h3 class="title">{label}</h3>
-    <ul class="list">
-      {#each presetSearchLinks as { id, url }}
-        <li class="row">
-          {id}
-          <code>{url}</code>
-        </li>
-      {/each}
-    </ul>
-    <Button variant="primary" type="submit" handleClick={(e) => handleAdd(e, presetSearchLinks)}>Add</Button>
+    <form class="preset-container" on:submit={(e) => handleAdd(e, presetSearchLinks)}>
+      <h3 class="title">{label}</h3>
+      <ul class="list">
+        {#each presetSearchLinks as { id, url }}
+          <li class="row">
+            {id}
+            <code>{url}</code>
+          </li>
+        {/each}
+      </ul>
+      <Button variant="primary" type="submit">Add preset</Button>
+    </form>
   {/each}
-
-  {#if alreadyAddedSearchLinks.length > 0}
-    <p><strong></strong> is already in use. Choose a different one.</p>
-  {/if}
-</form>
+</section>
 
 <style>
-  form {
+  .grid,
+  .preset-container {
     display: flex;
     flex-direction: column;
+  }
+
+  .grid {
     gap: 1rem;
+  }
+
+  .preset-container {
+    gap: 0.5rem;
   }
 
   .title {
@@ -79,6 +85,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    border-radius: var(--border-radius-1);
+    background-color: var(--color-dark-2);
+    padding: 0.8rem 0.6rem;
   }
 
   .row {
@@ -87,7 +96,6 @@
     gap: 0.5rem;
     font-size: 1rem;
     white-space: nowrap;
-    cursor: inherit;
     contain: paint;
   }
 </style>

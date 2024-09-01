@@ -96,7 +96,7 @@
 <h1>Your saved queries</h1>
 <div class="filter-container">
   <label class="filter-label" for="id"> Filter </label>
-  <input id="id" type="text" bind:value={filter} required />
+  <input class="filter-input" id="id" type="text" bind:value={filter} required />
 </div>
 <form class="form-container" on:submit|preventDefault={handleRemove}>
   {#if savedSearchLinks.length > 0}
@@ -162,20 +162,20 @@
     gap: 1rem;
   }
 
-  input {
-    outline: 2px solid transparent;
+  .filter-input {
     border-radius: var(--border-radius-1);
     padding-left: 0.5rem;
     border: none;
+    width: 40ch;
   }
 
   .fieldset-row {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     cursor: move;
-    border: 2px solid var(--color-dark-4);
+    border: 2px solid var(--color-dark-5);
     border-radius: var(--border-radius-1);
+    background-color: var(--color-dark-2);
     padding: 0.5rem 1rem;
   }
 
@@ -183,22 +183,26 @@
     border-color: var(--color-green);
   }
 
+  .fieldset-row input {
+    margin: 0;
+  }
+
   .fieldset-row label {
     display: flex;
     align-items: center;
     font-size: 1rem;
     white-space: nowrap;
-    cursor: inherit;
     max-width: calc(60vw);
     contain: paint;
+    padding-left: 0.7rem;
   }
 
-  .fieldset-row input {
+  .fieldset-row :is(input, label) {
     cursor: pointer;
   }
 
   .fieldset-row label code {
-    margin-left: 0.5rem;
+    margin-left: 0.6rem;
     overflow: hidden;
     text-overflow: ellipsis;
   }

@@ -18,6 +18,7 @@ export const DEFAULT: Preset = {
 }
 
 export const PRESETS: Preset[] = [
+  DEFAULT,
   {
     id: 'dev',
     label: 'Dev preset',
