@@ -14,6 +14,7 @@ export const DEFAULT: Preset = {
     { id: '🌐 Google', url: `https://google.com/search?q=${SEARCH_PLACEHOLDER}` },
     { id: '🍊 Google + Reddit', url: `https://google.com/search?q=reddit ${SEARCH_PLACEHOLDER}` },
     { id: '🟠 Reddit', url: `https://www.reddit.com/search/?q=${SEARCH_PLACEHOLDER}` },
+    { id: '🗺️ Google Maps', url: `https://www.google.es/maps/search/${SEARCH_PLACEHOLDER}` },
   ],
 }
 
